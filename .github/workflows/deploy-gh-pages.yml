@@ -6,7 +6,7 @@ on:
     paths:
       - src/**
       - public/**
-      - .github/workflows/deploy.yml
+      - .github/workflows/deploy-gh-pages.yml
 permissions:
   contents: write
 jobs:
