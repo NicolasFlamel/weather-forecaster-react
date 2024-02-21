@@ -1,7 +1,13 @@
 import './styles.css';
 
 const Search = () => {
-  return <h1>Search</h1>;
+  return (
+    <search className="weather-search" role="search">
+      <form>
+        <h1>Search</h1>
+      </form>
+    </search>
+  );
 };
 
 export default Search;

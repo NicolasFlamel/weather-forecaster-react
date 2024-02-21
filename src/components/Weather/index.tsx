@@ -1,7 +1,11 @@
 import './styles.css';
 
 const Weather = () => {
-  return <h1>Weather</h1>;
+  return (
+    <main className='weather-main'>
+      <h1>Weather</h1>
+    </main>
+  );
 };
 
 export default Weather;
