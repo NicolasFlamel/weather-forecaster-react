@@ -1,11 +1,11 @@
 import './styles.css';
+import SearchForm from '../SearchForm';
 
 const Search = () => {
   return (
     <search className="weather-search" role="search">
-      <form>
-        <h1>Search</h1>
-      </form>
+      <h1>Search</h1>
+      <SearchForm />
     </search>
   );
 };
