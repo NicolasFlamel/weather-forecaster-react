@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useLocation } from 'context/LocationContext';
 import { Button } from 'components';
 
 type Inputs = {
@@ -6,6 +7,7 @@ type Inputs = {
 };
 
 const SearchForm = () => {
+  const { updateLocation } = useLocation();
   const {
     handleSubmit,
     register,
@@ -13,7 +15,7 @@ const SearchForm = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    updateLocation(data.city);
   };
 
   return (
