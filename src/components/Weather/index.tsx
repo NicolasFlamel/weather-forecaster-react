@@ -32,6 +32,7 @@ const Weather = () => {
         <p>Wind Speed: {speedConverted.toFixed(2) + ' MPH'}</p>
         <p>Humidity: {weatherData.main.humidity + '%'}</p>
       </section>
+      <Forecast />
     </main>
   );
 };
