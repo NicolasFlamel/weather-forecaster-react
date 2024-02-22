@@ -5,10 +5,9 @@ import { WeatherProvider, LocationProvider } from 'context';
 function App() {
   return (
     <div className="App">
-      <Header />
       <LocationProvider>
         <WeatherProvider>
-          <Search />
+          <Header />
           <Weather />
         </WeatherProvider>
       </LocationProvider>
