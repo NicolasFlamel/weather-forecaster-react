@@ -1,24 +1,22 @@
 import './styles.css';
-import { useLocation } from 'context/LocationContext';
 import { useWeather } from 'context/WeatherContext';
 
 const WeatherReport = () => {
-  const { locationName } = useLocation();
   const { weatherData, loadingWeather } = useWeather();
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
-  if (!weatherData) return <h1>Error !weatherData</h1>;
+  if (!weatherData) {
+    console.error('!weatherData');
+    return <h1>Error !weatherData</h1>;
+  }
 
   const tempConverted = ((weatherData.main.temp - 273.15) * 9) / 5 + 32;
   const speedConverted = weatherData.wind.speed * 2.237;
 
   return (
     <section className="weather-report">
-      <h1>Weather</h1>
-      <h2>Current location: {locationName}</h2>
-      <h3>Weather Data: </h3>
+      <h1>Current Weather</h1>
       <section>
-        <h4>{weatherData.name}</h4>
         <img
           className="weather-img weather-icon"
           title={weatherData.weather[0].description}
