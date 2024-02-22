@@ -1,7 +1,7 @@
 import './styles.css';
 import { useWeather } from 'context/WeatherContext';
 
-const Forecast = () => {
+const WeatherForecast = () => {
   const { forecastData, loadingWeather } = useWeather();
   const forecastArray = forecastData?.list.filter((forecast) =>
     // get the days at 9 am
@@ -32,4 +32,4 @@ const Forecast = () => {
   );
 };
 
-export default Forecast;
+export default WeatherForecast;
