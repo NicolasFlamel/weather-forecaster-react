@@ -1,7 +1,11 @@
 import './styles.css';
 
 const Header = () => {
-  return <h1>Header</h1>;
+  return (
+    <header className="weather-header">
+      <h1>Weather Dashboard</h1>
+    </header>
+  );
 };
 
 export default Header;
