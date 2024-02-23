@@ -1,14 +1,29 @@
 import './styles.css';
 import dayjs from 'dayjs';
+import { MutableRefObject } from 'react';
+import { ForecastDataListType } from 'types';
 import { useWeather } from 'context/WeatherContext';
 import { ForecastCard } from 'components';
 
-const WeatherForecast = () => {
+interface WeatherForecastProps {
+  weatherDetails: MutableRefObject<ForecastDataListType | undefined>;
+  setShowDetails: React.Dispatch<boolean>;
+}
+
+const WeatherForecast = ({
+  weatherDetails,
+  setShowDetails,
+}: WeatherForecastProps) => {
   const { forecastData, loadingWeather } = useWeather();
   const forecastArray = forecastData?.list.filter((forecast) =>
     // get the weather at 9 am
     (forecast.dt / 3600) % 24 === 9 ? true : false,
   );
+
+  const handleClick = (forecast: ForecastDataListType) => {
+    weatherDetails.current = forecast;
+    setShowDetails(true);
+  };
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
 
@@ -23,7 +38,7 @@ const WeatherForecast = () => {
 
           return (
             <li key={forecast.dt}>
-              <ForecastCard>
+              <ForecastCard onClick={() => handleClick(forecast)}>
                 <img
                   className="weather-img weather-icon"
                   title={forecast.weather[0].description}
