@@ -148,29 +148,56 @@ type ForecastDataListType = {
 
 export type ForecastDataType = {
   city: {
+    /**
+     * @description `id` City ID. Please note that built-in geocoder functionality has been deprecated. Learn more {@link https://openweathermap.org/forecast5#builtin | here}
+     */
     id: number;
+    /**
+     *  @description `name` City name. Please note that built-in geocoder functionality has been deprecated. Learn more {@link https://openweathermap.org/forecast5#builtin | here}
+     */
     name: string;
     coord: {
+      /**
+       * @description `lat`: Geo location, latitude
+       */
       lat: number;
+      /**
+       * @description `lon`: Geo location, longitude
+       */
       lon: number;
     };
+    /**
+     * @description `country`: Country code (GB, JP etc.). Please note that built-in geocoder functionality has been deprecated. Learn more {@link https://openweathermap.org/forecast5#builtin | here}
+     */
     country: string;
+    /**
+     * @description `population` City population
+     */
     population: number;
+    /**
+     * @description `timezone` Shift in seconds from UTC
+     */
     timezone: number;
+    /**
+     * @description `sunrise` Sunrise time, Unix, UTC
+     */
     sunrise: number;
+    /**
+     * @description `sunset` Sunset time, Unix, UTC
+     */
     sunset: number;
   };
   /**
-   * A number of timestamps returned in the API response
+   * @description `cnt`: A number of timestamps returned in the API response
    */
   cnt: number;
   /**
-   * Internal parameter 3
+   * @description `cod`: Internal parameter 3
    */
   cod: string;
   list: ForecastDataListType[];
   /**
-   * message Internal parameter
+   *  @description `message`: message Internal parameter
    */
   message: any;
 };
