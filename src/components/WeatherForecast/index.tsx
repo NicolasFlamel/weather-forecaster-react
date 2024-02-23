@@ -1,10 +1,11 @@
 import './styles.css';
 import { useWeather } from 'context/WeatherContext';
+import { ForecastCard } from 'components';
 
 const WeatherForecast = () => {
   const { forecastData, loadingWeather } = useWeather();
   const forecastArray = forecastData?.list.filter((forecast) =>
-    // get the days at 9 am
+    // get the weather at 9 am
     (forecast.dt / 3600) % 24 === 9 ? true : false,
   );
 
@@ -13,17 +14,25 @@ const WeatherForecast = () => {
   return (
     <section className="forecast">
       <h1>Forecast</h1>
-      <ol>
+      <ol className="forecast-list">
         {forecastArray?.map((forecast) => {
           const tempConverted = ((forecast.main.temp - 273.15) * 9) / 5 + 32;
           const speedConverted = forecast.wind.speed * 2.237;
 
           return (
             <li key={forecast.dt}>
-              <p>Date: {forecast.dt_txt}</p>
-              <p>Temperature: {tempConverted.toFixed(2) + ' °F'}</p>
-              <p>Wind Speed: {speedConverted.toFixed(2) + ' MPH'}</p>
-              <p>Humidity: {forecast.main.humidity + '%'}</p>
+              <ForecastCard>
+                <p>Date: {forecast.dt_txt}</p>
+                <img
+                  className="weather-img weather-icon"
+                  title={forecast.weather[0].description}
+                  alt={forecast.weather[0].description}
+                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+                />
+                <p>Temperature: {tempConverted.toFixed(2) + ' °F'}</p>
+                <p>Wind Speed: {speedConverted.toFixed(2) + ' MPH'}</p>
+                <p>Humidity: {forecast.main.humidity + '%'}</p>
+              </ForecastCard>
             </li>
           );
         })}

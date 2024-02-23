@@ -1,4 +1,5 @@
 import Button from './Button';
+import ForecastCard from './ForecastCard';
 import Header from './Header';
 import Search from './Search';
 import SearchForm from './SearchForm';
@@ -9,6 +10,7 @@ import WeatherReport from './WeatherReport';
 
 export {
   Button,
+  ForecastCard,
   Header,
   Search,
   SearchForm,
