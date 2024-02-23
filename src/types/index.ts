@@ -1,4 +1,4 @@
-type WeatherType = {
+export type WeatherType = {
   /**
    * @description `description`: Weather condition within the group. Please find more {@link https://openweathermap.org/forecast5#list | here}. You can get the output in your language. {@link https://openweathermap.org/forecast5#multi | Learn more}
    */
@@ -125,7 +125,7 @@ export type WeatherDataType = {
   };
 };
 
-type ForecastDataListType = {
+export type ForecastDataListType = {
   /**
    * @description `all`: Cloudiness, %
    */

@@ -5,6 +5,7 @@ import Search from './Search';
 import SearchForm from './SearchForm';
 import SearchHistory from './SearchHistory';
 import Weather from './Weather';
+import WeatherDetail from './WeatherDetail';
 import WeatherForecast from './WeatherForecast';
 import WeatherReport from './WeatherReport';
 
@@ -16,6 +17,7 @@ export {
   SearchForm,
   SearchHistory,
   Weather,
+  WeatherDetail,
   WeatherForecast,
   WeatherReport,
 };
