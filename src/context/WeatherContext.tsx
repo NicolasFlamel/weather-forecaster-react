@@ -1,12 +1,17 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import { useLocation } from './LocationContext';
 import { WeatherDataType, ForecastDataType } from 'types';
 
 type WeatherProviderProps = {
   children: React.ReactNode;
 };
 
+type LocationType = {
+  lat: number;
+  lon: number;
+};
+
 interface WeatherContextInterface {
+  setLocation: React.Dispatch<LocationType>;
   weatherData: WeatherDataType | undefined;
   forecastData: ForecastDataType | undefined;
   loadingWeather: boolean;
@@ -16,15 +21,24 @@ const defaultState = {} as WeatherContextInterface;
 
 const WeatherContext = createContext(defaultState);
 
+/**
+ * @property {React.Dispatch<LocationType>} setLocation
+ * @property {WeatherDataType} weatherData
+ * @property {ForecastDataType} forecastData
+ * @property {boolean} loadingWeather
+ */
 export const useWeather = () => useContext(WeatherContext);
 
 export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   const [loadingWeather, setLoadingWeather] = useState(true);
-  const [weatherData, setWeatherData] = useState<WeatherDataType>();
+  const [location, setLocation] = useState<LocationType>({
+    lat: 36.7783,
+    lon: -121.493895,
+  });
+  const [weatherData, setWeatherData] = useState<WeatherDataType>(
+    {} as WeatherDataType,
+  );
   const [forecastData, setForecastData] = useState<ForecastDataType>();
-  const {
-    locationData: { lat, lon },
-  } = useLocation();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -34,15 +48,15 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
 
     return () => controller.abort();
     // eslint-disable-next-line
-  }, [lat, lon]);
+  }, [location]);
 
   const getWeather = async (signal: AbortSignal) => {
     const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
     const weatherURL = new URL(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`,
+      `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${key}`,
     );
     const forecastURL = new URL(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}`,
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${key}`,
     );
 
     try {
@@ -67,7 +81,7 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     }
   };
 
-  const value = { weatherData, forecastData, loadingWeather };
+  const value = { setLocation, weatherData, forecastData, loadingWeather };
 
   return (
     <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>

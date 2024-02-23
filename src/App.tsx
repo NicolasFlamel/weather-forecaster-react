@@ -1,16 +1,14 @@
 import './App.css';
-import { Header, Search, Weather } from './components';
-import { WeatherProvider, LocationProvider } from 'context';
+import { Header, Weather } from './components';
+import { WeatherProvider } from 'context';
 
 function App() {
   return (
     <div className="App">
-      <LocationProvider>
-        <WeatherProvider>
-          <Header />
-          <Weather />
-        </WeatherProvider>
-      </LocationProvider>
+      <WeatherProvider>
+        <Header />
+        <Weather />
+      </WeatherProvider>
     </div>
   );
 }

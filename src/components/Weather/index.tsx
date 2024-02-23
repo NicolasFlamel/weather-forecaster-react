@@ -1,13 +1,13 @@
-import { useLocation } from 'context/LocationContext';
 import './styles.css';
+import { useWeather } from 'context/WeatherContext';
 import { WeatherForecast, WeatherReport } from 'components';
 
 const Weather = () => {
-  const { locationData } = useLocation();
+  const { weatherData } = useWeather();
 
   return (
     <main className="weather-main">
-      <h1>{locationData.name}</h1>
+      <h1>{weatherData?.name}</h1>
       <WeatherReport />
       <WeatherForecast />
     </main>
