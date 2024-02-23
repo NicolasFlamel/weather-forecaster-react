@@ -1,5 +1,5 @@
 import './styles.css';
-import { SearchForm, SearchHistory } from 'components';
+import { SearchForm } from 'components';
 
 const Search = () => {
   return (
