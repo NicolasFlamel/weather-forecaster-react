@@ -19,37 +19,108 @@ type WeatherType = {
 
 export type WeatherDataType = {
   base: string;
+  /**
+   * @description `all`: Cloudiness, %
+   */
   clouds: {
+    /**
+     * @description `all`: Cloudiness, %
+     */
     all: number;
   };
+  /**
+   * @description `cod`: Internal parameter 3
+   */
   cod: number;
+
   coord: {
-    lon: number;
+    /**
+     * @description `lat`: Geo location, latitude
+     */
     lat: number;
+    /**
+     * @description `lon`: Geo location, longitude
+     */
+    lon: number;
   };
+  /**
+   * @description `dt`: Time of data forecasted, unix, UTC
+   */
   dt: number;
+  /**
+   * @description `id`: City ID. Please note that built-in geocoder functionality has been deprecated. Learn more {@link https://openweathermap.org/current#builtin | here}
+   */
   id: number;
   main: {
+    /**
+     * @description `temp`: Temperature. Unit Default: Kelvin, Metric: Celsius,
+     */
     temp: number;
+    /**
+     * @description `feels_like`: This temperature parameter accounts for the human perception of weather. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit
+     */
     feels_like: number;
+    /**
+     *  @description `temp_min`: Minimum temperature at the moment of calculation. This is minimal forecasted temperature (within large megalopolises and urban areas), use this parameter optionally. Please find more info {@link https://openweathermap.org/forecast5#min | here}. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit
+     */
     temp_min: number;
+    /**
+     *
+     *  @description `temp_max`: Maximum temperature at the moment of calculation. This is maximal forecasted temperature (within large megalopolises and urban areas), use this parameter optionally. Please find more info {@link https://openweathermap.org/forecast5#min | here}. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit
+     */
     temp_max: number;
+    /**
+     *  @description `pressure`: Atmospheric pressure on the sea level by default, hPa
+     */
     pressure: number;
+    /**
+     * @description `humidity`: Humidity, %
+     */
     humidity: number;
   };
+  /**
+   * @description `name`: City name. Please note that built-in geocoder functionality has been deprecated. Learn more {@link https://openweathermap.org/current#builtin |here}
+   */
   name: string;
   sys: {
+    /**
+     * @description `type`:  Internal parameter
+     */
     type: number;
+    /**
+     * @description `id`:  Internal parameter
+     */
     id: number;
+    /**
+     * @description `country`: Country code (GB, JP etc.)
+     */
     country: string;
+    /**
+     * @description `sunrise`:  Sunrise time, unix, UTC
+     */
     sunrise: number;
+    /**
+     * @description `sunset`: Sunset time, unix, UTC
+     */
     sunset: number;
   };
+  /**
+   * @description `timezone` Shift in seconds from UTC
+   */
   timezone: number;
+  /**
+   * @description `visibility`: Average visibility, metres. The maximum value of the visibility is 10km
+   */
   visibility: number;
   weather: WeatherType[];
   wind: {
+    /**
+     * @description `speed`: Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour
+     */
     speed: number;
+    /**
+     * @description `deg`: Wind direction, degrees (meteorological)
+     */
     deg: number;
   };
 };
