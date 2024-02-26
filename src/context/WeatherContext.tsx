@@ -59,16 +59,6 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   }, [location]);
 
   const getWeather = async (signal: AbortSignal) => {
-    const tempWeather = JSON.parse(localStorage.getItem('weatherJSON') || '');
-    const tempForecast = JSON.parse(localStorage.getItem('forecastJSON') || '');
-
-    setWeatherData(tempWeather);
-    setForecastData(tempForecast);
-    setLoadingWeather(false);
-
-    return;
-
-    // eslint-disable-next-line
     const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
     const weatherURL = new URL(
       `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${key}`,
@@ -94,8 +84,8 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
       setForecastData(forecastJSON);
       setLoadingWeather(false);
     } catch (err) {
-      // if (err instanceof DOMException && err.name === 'AbortError') return;
-      // else console.error(err);
+      if (err instanceof DOMException && err.name === 'AbortError') return;
+      else console.error(err);
     }
   };
 
