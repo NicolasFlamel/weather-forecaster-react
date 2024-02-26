@@ -5,3 +5,11 @@
   margin: 0 auto;
   max-width: 1024px;
 }
+
+.App > .weather-header {
+  background-color: var(--theme-bg-color);
+}
+
+.App > .weather-main {
+  background-color: var(--theme-bg-color);
+}

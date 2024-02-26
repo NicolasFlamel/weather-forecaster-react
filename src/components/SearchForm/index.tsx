@@ -19,8 +19,6 @@ const SearchForm = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    setDisabled(true);
-
     const fetchLocation = async (city: string, signal: AbortSignal) => {
       const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
       const url = new URL(
@@ -35,14 +33,15 @@ const SearchForm = () => {
         const [{ lat, lon }] = await response.json();
 
         setLocation({ lat, lon });
-        setDisabled(false);
       } catch (error) {
-        setDisabled(false);
         console.error(error);
       }
     };
 
-    fetchLocation(searchLocation, controller.signal);
+    setDisabled(true);
+    fetchLocation(searchLocation, controller.signal).finally(() =>
+      setDisabled(false),
+    );
 
     return () => controller.abort();
   }, [searchLocation, setLocation]);
