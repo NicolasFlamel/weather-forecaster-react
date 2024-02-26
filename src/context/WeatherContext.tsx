@@ -21,6 +21,8 @@ interface WeatherContextInterface {
   forecastData: ForecastDataType | undefined;
   detailedData: WeatherDataType | ForecastDataListType[] | null;
   setDetailedDataTo: (day: ForecastDayRange | null) => void;
+  isMetric: boolean;
+  changeMetric: () => void;
   loadingWeather: boolean;
 }
 
@@ -47,6 +49,7 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   const [detailedData, setDetailedData] = useState<
     WeatherDataType | ForecastDataListType[] | null
   >(null);
+  const [isMetric, setIsMetric] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -61,10 +64,10 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   const getWeather = async (signal: AbortSignal) => {
     const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
     const weatherURL = new URL(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${key}`,
+      `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${key}&units=metric`,
     );
     const forecastURL = new URL(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${key}`,
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${key}&units=metric`,
     );
 
     try {
@@ -107,12 +110,18 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     }
   };
 
+  const changeMetric = () => {
+    setIsMetric((prev) => !prev);
+  };
+
   const value = {
     setLocation,
     weatherData,
     forecastData,
     detailedData,
     setDetailedDataTo,
+    isMetric,
+    changeMetric,
     loadingWeather,
   };
 

@@ -1,18 +1,17 @@
 import Button from 'components/Button';
 import './styles.css';
 import { useWeather } from 'context/WeatherContext';
+import { getSpeedString, getTempString } from 'helpers/convert';
 
 const WeatherReport = () => {
-  const { weatherData, setDetailedDataTo, loadingWeather } = useWeather();
+  const { weatherData, setDetailedDataTo, isMetric, loadingWeather } =
+    useWeather();
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
   if (!weatherData) {
     console.error('!weatherData');
     return <h1>Error !weatherData</h1>;
   }
-
-  const tempConverted = ((weatherData.main.temp - 273.15) * 9) / 5 + 32;
-  const speedConverted = weatherData.wind.speed * 2.237;
 
   const handleClick = () => {
     setDetailedDataTo(0);
@@ -29,11 +28,16 @@ const WeatherReport = () => {
           src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
         />
       </section>
+
       <section>
-        <p>Temperature: {tempConverted.toFixed(2) + ' °F'}</p>
-        <p>Wind Speed: {speedConverted.toFixed(2) + ' MPH'}</p>
+        <p>Temperature: {getTempString(weatherData.main.temp, isMetric)}</p>
+        <p>
+          Feels like: {getTempString(weatherData.main.feels_like, isMetric)}
+        </p>
+        <p>Wind Speed: {getSpeedString(weatherData.wind.speed, isMetric)}</p>
         <p>Humidity: {weatherData.main.humidity + '%'}</p>
       </section>
+
       <Button onClick={handleClick}>Show More</Button>
     </section>
   );

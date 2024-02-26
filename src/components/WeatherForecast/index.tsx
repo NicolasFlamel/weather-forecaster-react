@@ -3,9 +3,11 @@ import dayjs from 'dayjs';
 import { useWeather } from 'context/WeatherContext';
 import { ForecastCard } from 'components';
 import { ForecastDayRange } from 'types';
+import { getSpeedString, getTempString } from 'helpers/convert';
 
 const WeatherForecast = () => {
-  const { forecastData, setDetailedDataTo, loadingWeather } = useWeather();
+  const { forecastData, setDetailedDataTo, loadingWeather, isMetric } =
+    useWeather();
   const forecastArray = forecastData?.list.filter((forecast) =>
     // filter for weather at 9 am
     (forecast.dt / 3600) % 24 === 9 ? true : false,
@@ -15,8 +17,8 @@ const WeatherForecast = () => {
     if (!forecastData) return console.error(!forecastData);
 
     if (!section) setDetailedDataTo(0);
-    else if (section > 0 && section < 5) setDetailedDataTo(section);
-    else console.error();
+    else if (section > 0 && section < 6) setDetailedDataTo(section);
+    else console.error('handleClick', section);
   };
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
@@ -27,8 +29,6 @@ const WeatherForecast = () => {
       <ol className="forecast-list">
         {forecastArray?.map((forecast, index) => {
           const forecastDate = dayjs(forecast.dt_txt);
-          const tempConverted = ((forecast.main.temp - 273.15) * 9) / 5 + 32;
-          const speedConverted = forecast.wind.speed * 2.237;
 
           return (
             <li key={forecast.dt}>
@@ -42,10 +42,17 @@ const WeatherForecast = () => {
                   src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 />
                 <p>{forecastDate.format('dddd')}</p>
-                <p>Temperature: {tempConverted.toFixed(2) + ' °F'}</p>
-                <p>Wind Speed: {speedConverted.toFixed(2) + ' MPH'}</p>
-                <p>Humidity: {forecast.main.humidity + '%'}</p>
-                <p>Precipitation: {forecast.pop * 100}%</p>
+
+                <p>
+                  Temperature: {getTempString(forecast.main.temp, isMetric)}
+                </p>
+                <p>
+                  Fees like: {getTempString(forecast.main.feels_like, isMetric)}
+                </p>
+                <p>
+                  Wind Speed: {getSpeedString(forecast.wind.speed, isMetric)}
+                </p>
+                <p>Precipitation chance: {Math.floor(forecast.pop * 100)}%</p>
               </ForecastCard>
             </li>
           );
