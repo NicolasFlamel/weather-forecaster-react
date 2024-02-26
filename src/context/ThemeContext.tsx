@@ -38,7 +38,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   useEffect(() => {
     document.body.classList.value = theme;
-  }, []);
+  }, [weatherData, theme]);
 
   const updateThemeTo = (inputTheme: ThemeType) => {
     setTheme(inputTheme);
