@@ -8,7 +8,7 @@
   list-style-type: none;
 }
 
-.forecast-details .custom-forecast-card {
+.forecast-details .custom-forecast-card:hover {
   cursor: unset;
   transform: none;
   user-select: unset;
