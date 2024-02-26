@@ -3,14 +3,14 @@ import { ForecastDataListType } from 'types';
 import dayjs from 'dayjs';
 import ForecastCard from 'components/ForecastCard';
 import { getSpeedString, getTempString } from 'helpers/convert';
-import { useWeather } from 'context/WeatherContext';
+import { useUnit } from 'context';
 
 interface ForecastDetailsProps {
   data: ForecastDataListType[];
 }
 
 const ForecastDetails = ({ data }: ForecastDetailsProps) => {
-  const { isMetric } = useWeather();
+  const { isMetric } = useUnit();
 
   return (
     <section className="forecast-details">

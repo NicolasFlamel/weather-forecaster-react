@@ -1,11 +1,11 @@
 import Button from 'components/Button';
 import './styles.css';
-import { useWeather } from 'context/WeatherContext';
+import { useUnit, useWeather } from 'context';
 import { getSpeedString, getTempString } from 'helpers/convert';
 
 const WeatherReport = () => {
-  const { weatherData, setDetailedDataTo, isMetric, loadingWeather } =
-    useWeather();
+  const { weatherData, setDetailedDataTo, loadingWeather } = useWeather();
+  const { isMetric } = useUnit();
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
   if (!weatherData) {

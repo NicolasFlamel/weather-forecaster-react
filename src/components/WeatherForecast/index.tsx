@@ -1,13 +1,13 @@
 import './styles.css';
 import dayjs from 'dayjs';
-import { useWeather } from 'context/WeatherContext';
+import { useUnit, useWeather } from 'context';
 import { ForecastCard } from 'components';
 import { ForecastDayRange } from 'types';
 import { getSpeedString, getTempString } from 'helpers/convert';
 
 const WeatherForecast = () => {
-  const { forecastData, setDetailedDataTo, loadingWeather, isMetric } =
-    useWeather();
+  const { forecastData, setDetailedDataTo, loadingWeather } = useWeather();
+  const { isMetric } = useUnit();
   const forecastArray = forecastData?.list.filter((forecast) =>
     // filter for weather at 9 am
     (forecast.dt / 3600) % 24 === 9 ? true : false,
