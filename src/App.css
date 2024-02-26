@@ -1,5 +1,15 @@
 .App {
+  --border-color: black;
+  --bg-color: black;
+
   margin: 0 auto;
   max-width: 1024px;
-  border: black solid 1px;
+}
+
+.App > .weather-header {
+  background-color: var(--theme-bg-color);
+}
+
+.App > .weather-main {
+  background-color: var(--theme-bg-color);
 }

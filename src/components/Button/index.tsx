@@ -5,9 +5,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
 }
 
-const Button = ({ children, type }: ButtonProps) => {
+const Button = ({
+  children,
+  type,
+  onClick,
+  disabled,
+  className,
+}: ButtonProps) => {
   return (
-    <button type={type} className="custom-btn">
+    <button
+      className={className ? className + ' custom-btn' : 'custom-btn'}
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

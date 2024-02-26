@@ -1,14 +1,26 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import { useLocation } from './LocationContext';
-import { WeatherDataType, ForecastDataType } from 'types';
+import {
+  WeatherDataType,
+  ForecastDataType,
+  ForecastDataListType,
+  ForecastDayRange,
+} from 'types';
 
 type WeatherProviderProps = {
   children: React.ReactNode;
 };
 
+type LocationType = {
+  lat: number;
+  lon: number;
+};
+
 interface WeatherContextInterface {
+  setLocation: React.Dispatch<LocationType>;
   weatherData: WeatherDataType | undefined;
   forecastData: ForecastDataType | undefined;
+  detailedData: WeatherDataType | ForecastDataListType[] | null;
+  setDetailedDataTo: (day: ForecastDayRange | null) => void;
   loadingWeather: boolean;
 }
 
@@ -16,15 +28,25 @@ const defaultState = {} as WeatherContextInterface;
 
 const WeatherContext = createContext(defaultState);
 
+/**
+ * @property {React.Dispatch<LocationType>} setLocation
+ * @property {WeatherDataType} weatherData
+ * @property {ForecastDataType} forecastData
+ * @property {boolean} loadingWeather
+ */
 export const useWeather = () => useContext(WeatherContext);
 
 export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   const [loadingWeather, setLoadingWeather] = useState(true);
+  const [location, setLocation] = useState<LocationType>({
+    lat: 36.7783,
+    lon: -121.493895,
+  });
   const [weatherData, setWeatherData] = useState<WeatherDataType>();
   const [forecastData, setForecastData] = useState<ForecastDataType>();
-  const {
-    locationData: { lat, lon },
-  } = useLocation();
+  const [detailedData, setDetailedData] = useState<
+    WeatherDataType | ForecastDataListType[] | null
+  >(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -34,15 +56,15 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
 
     return () => controller.abort();
     // eslint-disable-next-line
-  }, [lat, lon]);
+  }, [location]);
 
   const getWeather = async (signal: AbortSignal) => {
     const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
     const weatherURL = new URL(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`,
+      `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${key}`,
     );
     const forecastURL = new URL(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}`,
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${key}`,
     );
 
     try {
@@ -67,17 +89,34 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     }
   };
 
-  const value = { weatherData, forecastData, loadingWeather };
+  const setDetailedDataTo = (day: ForecastDayRange | null) => {
+    if (day === null) setDetailedData(null);
+    else if (day === 0 && weatherData) setDetailedData(weatherData);
+    else if (forecastData) {
+      const section = day - 1;
+      // data is split in intervals of 3 hours from 00:00 to 24:00
+      // slice gets list data from 00:00 to 21:00 depending on index passed
+      const forecastDayList = forecastData.list.slice(
+        section * 8,
+        section * 8 + 8,
+      );
+
+      setDetailedData(forecastDayList);
+    } else {
+      console.error('setDetailedDataTo failed');
+    }
+  };
+
+  const value = {
+    setLocation,
+    weatherData,
+    forecastData,
+    detailedData,
+    setDetailedDataTo,
+    loadingWeather,
+  };
 
   return (
     <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>
   );
 };
-
-// {
-//   "name": "Sacramento",
-//   "lat": 38.5810606,
-//   "lon": -121.493895,
-//   "country": "US",
-//   "state": "California"
-// }

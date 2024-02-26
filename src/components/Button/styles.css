@@ -1,2 +1,21 @@
 .custom-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.custom-btn:hover {
+  color: var(--theme-blue-btn-text);
+  border: 2px var(--theme-blue-btn-bg) solid;
+  background-color: var(--theme-blue-btn-bg);
+  border-radius: 9999px;
+}
+
+.close-btn {
+  height: 50px;
+  width: 50px;
+  line-height: 1rem;
+  padding: 1rem;
+  vertical-align: middle;
+  border-radius: 50%;
 }

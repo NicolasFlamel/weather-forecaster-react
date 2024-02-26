@@ -1,4 +1,4 @@
-import { LocationProvider } from './LocationContext';
+import { ThemeProvider } from './ThemeContext';
 import { WeatherProvider } from './WeatherContext';
 
-export { LocationProvider, WeatherProvider };
+export { ThemeProvider, WeatherProvider };

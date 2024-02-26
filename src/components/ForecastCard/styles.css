@@ -1,0 +1,13 @@
+.custom-forecast-card {
+  padding: 1rem;
+
+  border: solid 1px var(--border-color);
+  border-radius: 10px;
+
+  user-select: none;
+}
+
+.custom-forecast-card:hover {
+  cursor: pointer;
+  transform: translate(5px, -5px);
+}
