@@ -4,11 +4,7 @@ import { useWeather } from 'context/WeatherContext';
 import { ForecastCard } from 'components';
 import { ForecastDayRange } from 'types';
 
-interface WeatherForecastProps {
-  setShowDetails: React.Dispatch<boolean>;
-}
-
-const WeatherForecast = ({ setShowDetails }: WeatherForecastProps) => {
+const WeatherForecast = () => {
   const { forecastData, setDetailedDataTo, loadingWeather } = useWeather();
   const forecastArray = forecastData?.list.filter((forecast) =>
     // filter for weather at 9 am

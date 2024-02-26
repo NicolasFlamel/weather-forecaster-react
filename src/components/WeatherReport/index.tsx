@@ -1,8 +1,9 @@
+import Button from 'components/Button';
 import './styles.css';
 import { useWeather } from 'context/WeatherContext';
 
 const WeatherReport = () => {
-  const { weatherData, loadingWeather } = useWeather();
+  const { weatherData, setDetailedDataTo, loadingWeather } = useWeather();
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
   if (!weatherData) {
@@ -12,6 +13,10 @@ const WeatherReport = () => {
 
   const tempConverted = ((weatherData.main.temp - 273.15) * 9) / 5 + 32;
   const speedConverted = weatherData.wind.speed * 2.237;
+
+  const handleClick = () => {
+    setDetailedDataTo(0);
+  };
 
   return (
     <section className="weather-report">
@@ -29,6 +34,7 @@ const WeatherReport = () => {
         <p>Wind Speed: {speedConverted.toFixed(2) + ' MPH'}</p>
         <p>Humidity: {weatherData.main.humidity + '%'}</p>
       </section>
+      <Button onClick={handleClick}>Show More</Button>
     </section>
   );
 };

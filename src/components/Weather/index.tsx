@@ -1,11 +1,9 @@
 import './styles.css';
-import { useState } from 'react';
 import { useWeather } from 'context/WeatherContext';
 import { WeatherDetail, WeatherForecast, WeatherReport } from 'components';
 
 const Weather = () => {
   const { weatherData, detailedData } = useWeather();
-  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <main className="weather-main">
@@ -13,10 +11,10 @@ const Weather = () => {
       {detailedData === null ? (
         <section className="weather-summary">
           <WeatherReport />
-          <WeatherForecast setShowDetails={setShowDetails} />
+          <WeatherForecast />
         </section>
       ) : (
-        <WeatherDetail setShowDetails={setShowDetails} />
+        <WeatherDetail />
       )}
     </main>
   );
