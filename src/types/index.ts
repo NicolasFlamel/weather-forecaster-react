@@ -272,3 +272,24 @@ export type ForecastDataType = {
    */
   message: any;
 };
+
+export type ForecastDayRange = 0 | 1 | 2 | 3 | 4 | 5;
+
+/**
+ * @type {NumericRange<F, T>}
+ * @param F initial number
+ * @param T ending number - inclusive
+ */
+export type NumericRange<
+  START extends number,
+  END extends number,
+  ARR extends unknown[] = [],
+  ACC extends number = never,
+> = ARR['length'] extends END
+  ? ACC | START | END
+  : NumericRange<
+      START,
+      END,
+      [...ARR, 1],
+      ARR[START] extends undefined ? ACC : ACC | ARR['length']
+    >;
