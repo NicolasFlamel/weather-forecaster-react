@@ -1,3 +1,4 @@
+import { ThemeProvider } from './ThemeContext';
 import { WeatherProvider } from './WeatherContext';
 
-export { WeatherProvider };
+export { ThemeProvider, WeatherProvider };

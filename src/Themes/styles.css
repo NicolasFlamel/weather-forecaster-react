@@ -1,0 +1,55 @@
+body.clear-sky {
+  --theme-text-color: white;
+  --theme-bg-color: #78c1f3;
+
+  background-color: #cdf5fd;
+}
+
+body.few-clouds {
+  --theme-text-color: green;
+  --theme-bg-color: green;
+
+  background-color: yellow;
+}
+
+body.scattered-clouds {
+  --theme-text-color: black;
+
+  background-color: #cdf5fd;
+}
+
+body.broken-clouds {
+  --theme-text-color: black;
+
+  background-color: #cdf5fd;
+}
+
+body.shower-rain {
+  --theme-text-color: black;
+
+  background-color: #cdf5fd;
+}
+
+body.rain {
+  --theme-text-color: black;
+
+  background-color: #cdf5fd;
+}
+
+body.thunderstorm {
+  --theme-text-color: black;
+
+  background-color: #cdf5fd;
+}
+
+body.snow {
+  --theme-text-color: black;
+
+  background-color: #cdf5fd;
+}
+
+body.mist {
+  --theme-text-color: black;
+
+  background-color: #cdf5fd;
+}

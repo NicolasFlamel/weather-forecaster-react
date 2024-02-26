@@ -1,13 +1,15 @@
 import './App.css';
 import { Header, Weather } from './components';
-import { WeatherProvider } from 'context';
+import { ThemeProvider, WeatherProvider } from 'context';
 
 function App() {
   return (
     <div className="App">
       <WeatherProvider>
-        <Header />
-        <Weather />
+        <ThemeProvider>
+          <Header />
+          <Weather />
+        </ThemeProvider>
       </WeatherProvider>
     </div>
   );
