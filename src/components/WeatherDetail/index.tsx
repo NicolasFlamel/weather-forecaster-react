@@ -1,19 +1,15 @@
-import { useWeather } from 'context/WeatherContext';
 import './styles.css';
-import Button from 'components/Button';
+import { useWeather } from 'context/WeatherContext';
+import { Button, ForecastDetails, ReportDetails } from 'components';
 
-interface WeatherDetailProps {
-  setShowDetails: React.Dispatch<boolean>;
-}
-
-const WeatherDetail = ({ setShowDetails }: WeatherDetailProps) => {
+const WeatherDetail = () => {
   const { detailedData, setDetailedDataTo } = useWeather();
+
+  if (detailedData === null) return <h1>Error</h1>;
 
   const handleClose = () => {
     setDetailedDataTo(null);
   };
-
-  console.log(detailedData);
 
   return (
     <section className="weather-details">
@@ -21,6 +17,11 @@ const WeatherDetail = ({ setShowDetails }: WeatherDetailProps) => {
       <Button className="close-details close-btn" onClick={handleClose}>
         X
       </Button>
+      {Array.isArray(detailedData) ? (
+        <ForecastDetails data={detailedData} />
+      ) : (
+        <ReportDetails data={detailedData} />
+      )}
     </section>
   );
 };

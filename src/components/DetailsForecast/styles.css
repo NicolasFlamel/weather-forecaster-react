@@ -1,0 +1,15 @@
+.forecast-details > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  padding: 0;
+  list-style-type: none;
+}
+
+.forecast-details .custom-forecast-card {
+  cursor: unset;
+  transform: none;
+  user-select: unset;
+}

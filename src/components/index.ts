@@ -1,4 +1,6 @@
 import Button from './Button';
+import ForecastDetails from './DetailsForecast';
+import ReportDetails from './DetailsReport';
 import ForecastCard from './ForecastCard';
 import Header from './Header';
 import Search from './Search';
@@ -11,6 +13,8 @@ import WeatherReport from './WeatherReport';
 
 export {
   Button,
+  ForecastDetails,
+  ReportDetails,
   ForecastCard,
   Header,
   Search,
