@@ -1,30 +1,22 @@
 import './styles.css';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useWeather } from 'context/WeatherContext';
 import { WeatherDetail, WeatherForecast, WeatherReport } from 'components';
-import { ForecastDataListType } from 'types';
 
 const Weather = () => {
-  const { weatherData } = useWeather();
-  const weatherDetails = useRef<ForecastDataListType>();
+  const { weatherData, detailedData } = useWeather();
   const [showDetails, setShowDetails] = useState(false);
 
   return (
     <main className="weather-main">
       <h1>{weatherData?.name}</h1>
-      {!showDetails ? (
+      {detailedData === null ? (
         <section className="weather-summary">
           <WeatherReport />
-          <WeatherForecast
-            weatherDetails={weatherDetails}
-            setShowDetails={setShowDetails}
-          />
+          <WeatherForecast setShowDetails={setShowDetails} />
         </section>
       ) : (
-        <WeatherDetail
-          weatherDetails={weatherDetails.current}
-          setShowDetails={setShowDetails}
-        />
+        <WeatherDetail setShowDetails={setShowDetails} />
       )}
     </main>
   );

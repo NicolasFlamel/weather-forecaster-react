@@ -1,0 +1,9 @@
+.weather-details {
+  position: relative;
+}
+
+.close-details {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

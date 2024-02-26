@@ -1,5 +1,10 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import { WeatherDataType, ForecastDataType } from 'types';
+import {
+  WeatherDataType,
+  ForecastDataType,
+  ForecastDataListType,
+  ForecastDayRange,
+} from 'types';
 
 type WeatherProviderProps = {
   children: React.ReactNode;
@@ -14,6 +19,8 @@ interface WeatherContextInterface {
   setLocation: React.Dispatch<LocationType>;
   weatherData: WeatherDataType | undefined;
   forecastData: ForecastDataType | undefined;
+  detailedData: WeatherDataType | ForecastDataListType[] | null;
+  setDetailedDataTo: (day: ForecastDayRange | null) => void;
   loadingWeather: boolean;
 }
 
@@ -35,10 +42,11 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     lat: 36.7783,
     lon: -121.493895,
   });
-  const [weatherData, setWeatherData] = useState<WeatherDataType>(
-    {} as WeatherDataType,
-  );
+  const [weatherData, setWeatherData] = useState<WeatherDataType>();
   const [forecastData, setForecastData] = useState<ForecastDataType>();
+  const [detailedData, setDetailedData] = useState<
+    WeatherDataType | ForecastDataListType[] | null
+  >(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -51,6 +59,16 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   }, [location]);
 
   const getWeather = async (signal: AbortSignal) => {
+    const tempWeather = JSON.parse(localStorage.getItem('weatherJSON') || '');
+    const tempForecast = JSON.parse(localStorage.getItem('forecastJSON') || '');
+
+    setWeatherData(tempWeather);
+    setForecastData(tempForecast);
+    setLoadingWeather(false);
+
+    return;
+
+    // eslint-disable-next-line
     const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
     const weatherURL = new URL(
       `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${key}`,
@@ -76,22 +94,39 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
       setForecastData(forecastJSON);
       setLoadingWeather(false);
     } catch (err) {
-      if (err instanceof DOMException && err.name === 'AbortError') return;
-      else console.error(err);
+      // if (err instanceof DOMException && err.name === 'AbortError') return;
+      // else console.error(err);
     }
   };
 
-  const value = { setLocation, weatherData, forecastData, loadingWeather };
+  const setDetailedDataTo = (day: ForecastDayRange | null) => {
+    if (day === null) setDetailedData(null);
+    else if (day === 0 && weatherData) setDetailedData(weatherData);
+    else if (forecastData) {
+      const section = day - 1;
+      // data is split in intervals of 3 hours from 00:00 to 24:00
+      // slice gets list data from 00:00 to 21:00 depending on index passed
+      const forecastDayList = forecastData.list.slice(
+        section * 8,
+        section * 8 + 8,
+      );
+
+      setDetailedData(forecastDayList);
+    } else {
+      console.error('setDetailedDataTo failed');
+    }
+  };
+
+  const value = {
+    setLocation,
+    weatherData,
+    forecastData,
+    detailedData,
+    setDetailedDataTo,
+    loadingWeather,
+  };
 
   return (
     <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>
   );
 };
-
-// {
-//   "name": "Sacramento",
-//   "lat": 38.5810606,
-//   "lon": -121.493895,
-//   "country": "US",
-//   "state": "California"
-// }

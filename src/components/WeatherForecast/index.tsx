@@ -1,28 +1,26 @@
 import './styles.css';
 import dayjs from 'dayjs';
-import { MutableRefObject } from 'react';
-import { ForecastDataListType } from 'types';
 import { useWeather } from 'context/WeatherContext';
 import { ForecastCard } from 'components';
+import { ForecastDayRange } from 'types';
 
 interface WeatherForecastProps {
-  weatherDetails: MutableRefObject<ForecastDataListType | undefined>;
   setShowDetails: React.Dispatch<boolean>;
 }
 
-const WeatherForecast = ({
-  weatherDetails,
-  setShowDetails,
-}: WeatherForecastProps) => {
-  const { forecastData, loadingWeather } = useWeather();
+const WeatherForecast = ({ setShowDetails }: WeatherForecastProps) => {
+  const { forecastData, setDetailedDataTo, loadingWeather } = useWeather();
   const forecastArray = forecastData?.list.filter((forecast) =>
-    // get the weather at 9 am
+    // filter for weather at 9 am
     (forecast.dt / 3600) % 24 === 9 ? true : false,
   );
 
-  const handleClick = (forecast: ForecastDataListType) => {
-    weatherDetails.current = forecast;
-    setShowDetails(true);
+  const handleClick = (section?: ForecastDayRange) => {
+    if (!forecastData) return console.error(!forecastData);
+
+    if (!section) setDetailedDataTo(0);
+    else if (section > 0 && section < 5) setDetailedDataTo(section);
+    else console.error();
   };
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
@@ -31,14 +29,16 @@ const WeatherForecast = ({
     <section className="forecast">
       <h1>Forecast</h1>
       <ol className="forecast-list">
-        {forecastArray?.map((forecast) => {
+        {forecastArray?.map((forecast, index) => {
           const forecastDate = dayjs(forecast.dt_txt);
           const tempConverted = ((forecast.main.temp - 273.15) * 9) / 5 + 32;
           const speedConverted = forecast.wind.speed * 2.237;
 
           return (
             <li key={forecast.dt}>
-              <ForecastCard onClick={() => handleClick(forecast)}>
+              <ForecastCard
+                onClick={() => handleClick((index + 1) as ForecastDayRange)}
+              >
                 <img
                   className="weather-img weather-icon"
                   title={forecast.weather[0].description}

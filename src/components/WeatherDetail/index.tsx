@@ -1,22 +1,26 @@
+import { useWeather } from 'context/WeatherContext';
 import './styles.css';
 import Button from 'components/Button';
-import { ForecastDataListType } from 'types';
 
 interface WeatherDetailProps {
-  weatherDetails: ForecastDataListType | undefined;
   setShowDetails: React.Dispatch<boolean>;
 }
 
-const WeatherDetail = ({
-  weatherDetails,
-  setShowDetails,
-}: WeatherDetailProps) => {
-  console.log(weatherDetails);
+const WeatherDetail = ({ setShowDetails }: WeatherDetailProps) => {
+  const { detailedData, setDetailedDataTo } = useWeather();
+
+  const handleClose = () => {
+    setDetailedDataTo(null);
+  };
+
+  console.log(detailedData);
 
   return (
     <section className="weather-details">
       <h1>Detailed Weather</h1>
-      <Button onClick={() => setShowDetails(false)}>X</Button>
+      <Button className="close-details close-btn" onClick={handleClose}>
+        X
+      </Button>
     </section>
   );
 };
