@@ -2,22 +2,27 @@ import './styles.css';
 import { ForecastDataListType } from 'types';
 import dayjs from 'dayjs';
 import ForecastCard from 'components/ForecastCard';
+import { getSpeedString, getTempString } from 'helpers/convert';
+import { useWeather } from 'context/WeatherContext';
 
 interface ForecastDetailsProps {
   data: ForecastDataListType[];
 }
 
 const ForecastDetails = ({ data }: ForecastDetailsProps) => {
-  console.log(data);
+  const { isMetric } = useWeather();
 
   return (
     <section className="forecast-details">
       <h1>Forecast</h1>
       <ul>
         {data.map((forecast) => {
-          const forecastDate = dayjs(forecast.dt_txt);
-          const tempConverted = ((forecast.main.temp - 273.15) * 9) / 5 + 32;
-          const speedConverted = forecast.wind.speed * 2.237;
+          const {
+            dt_txt,
+            main: { temp, feels_like, humidity },
+            wind: { speed },
+          } = forecast;
+          const forecastDate = dayjs(dt_txt);
 
           return (
             <li key={forecast.dt}>
@@ -29,10 +34,11 @@ const ForecastDetails = ({ data }: ForecastDetailsProps) => {
                   src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 />
                 <p>{forecastDate.format('dddd: hh:mm A')}</p>
-                <p>Temperature: {tempConverted.toFixed(2) + ' °F'}</p>
-                <p>Wind Speed: {speedConverted.toFixed(2) + ' MPH'}</p>
-                <p>Humidity: {forecast.main.humidity + '%'}</p>
-                <p>Precipitation: {forecast.pop * 100}%</p>
+                <p>Temperature: {getTempString(temp, isMetric)}</p>
+                <p>Fees like: {getTempString(feels_like, isMetric)}</p>
+                <p>Wind Speed: {getSpeedString(speed, isMetric)}</p>
+                <p>Humidity: {humidity + '%'}</p>
+                <p>Precipitation chance: {Math.floor(forecast.pop * 100)}%</p>
               </ForecastCard>
             </li>
           );
