@@ -14,4 +14,11 @@
 * {
   color: var(--theme-text-color);
   border-color: var(--theme-border-color);
+  border-radius: 10px;
+}
+
+*::placeholder {
+  padding-left: 1rem;
+  color: var(--theme-text-color);
+  font-style: italic;
 }

@@ -15,7 +15,8 @@ const SearchForm = () => {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<Inputs>({ shouldUnregister: true });
 
   useEffect(() => {
@@ -43,6 +44,10 @@ const SearchForm = () => {
 
     return () => controller.abort();
   }, [searchLocation, setLocation]);
+
+  useEffect(() => {
+    if (isSubmitSuccessful) reset();
+  }, [isSubmitSuccessful, reset]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { city } = data;
@@ -72,11 +77,7 @@ const SearchForm = () => {
           )}
         </form>
       ) : (
-        <SearchIcon
-          width={'30px'}
-          onClick={() => setUserSearch(true)}
-          style={{ cursor: 'pointer' }}
-        />
+        <SearchIcon width={'30px'} onClick={() => setUserSearch(true)} />
       )}
     </section>
   );

@@ -8,10 +8,12 @@ const Header = () => {
   return (
     <header className="weather-header">
       <h1>Weather Dashboard</h1>
-      <Button className="convert-unit" onClick={toggleMetric}>
-        {isMetric ? 'C°' : 'F°'}
-      </Button>
-      <Search />
+      <section className="controls">
+        <Search />
+        <Button className="convert-unit" onClick={toggleMetric}>
+          {isMetric ? 'C°' : 'F°'}
+        </Button>
+      </section>
     </header>
   );
 };
