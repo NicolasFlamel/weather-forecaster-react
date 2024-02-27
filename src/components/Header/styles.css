@@ -6,7 +6,8 @@
   margin-bottom: 1rem;
   text-align: center;
 
-  border: 1px solid;
+  border-width: 1px;
+  border-style: solid;
   border-top: unset;
   border-radius: 0 0 10px 10px;
 }
