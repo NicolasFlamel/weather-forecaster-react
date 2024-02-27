@@ -1,0 +1,24 @@
+.search-bar .search-input {
+  position: relative;
+}
+
+.search-bar .submit-search {
+  position: absolute;
+  top: 0;
+  right: 0%;
+}
+
+.search-bar svg {
+  padding: 5px;
+}
+
+.search-error > p {
+  position: absolute;
+
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 5px;
+
+  color: white;
+  background-color: red;
+}
