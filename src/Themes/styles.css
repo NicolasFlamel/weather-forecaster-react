@@ -1,9 +1,17 @@
+body {
+  background-attachment: fixed;
+  background-position: center;
+
+  animation: animatedBackground 10s linear infinite;
+}
+
 body.clear-sky {
   --theme-text-color: #176b87;
   --theme-border-color: #176b87;
   --theme-bg-color: #86b6f6;
 
   background-color: #eef5ff;
+  background-image: url('http://openweathermap.org/img/wn/01d@2x.png');
 }
 
 body.few-clouds {
@@ -12,6 +20,7 @@ body.few-clouds {
   --theme-bg-color: #176b87;
 
   background-color: #eef5ff;
+  background-image: url('http://openweathermap.org/img/wn/02n@2x.png');
 }
 
 body.scattered-clouds {
@@ -19,15 +28,17 @@ body.scattered-clouds {
   --theme-border-color: #0d4c92;
   --theme-bg-color: #59c1bd;
 
-  background-color: #cff5e7;
+  background-color: #0d4c92;
+  background-image: url('http://openweathermap.org/img/wn/03d@2x.png');
 }
 
 body.broken-clouds {
-  --theme-text-color: #9290c3;
-  --theme-border-color: #9290c3;
-  --theme-bg-color: #1b1a55;
+  --theme-text-color: #000;
+  --theme-border-color: #000;
+  --theme-bg-color: #fff;
 
-  background-color: #070f2b;
+  background-color: #fff;
+  background-image: url('http://openweathermap.org/img/wn/04d@2x.png');
 }
 
 body.shower-rain {
@@ -36,6 +47,7 @@ body.shower-rain {
   --theme-bg-color: #38419d;
 
   background-color: #200e3a;
+  background-image: url('http://openweathermap.org/img/wn/09d@2x.png');
 }
 
 body.rain {
@@ -44,6 +56,7 @@ body.rain {
   --theme-bg-color: #975c8d;
 
   background-color: #863a6f;
+  background-image: url('http://openweathermap.org/img/wn/10n@2x.png');
 }
 
 body.thunderstorm {
@@ -52,6 +65,7 @@ body.thunderstorm {
   --theme-bg-color: #5f6f94;
 
   background-color: #25316d;
+  background-image: url('http://openweathermap.org/img/wn/11d@2x.png');
 }
 
 body.snow {
@@ -60,6 +74,7 @@ body.snow {
   --theme-bg-color: #5c99c5;
 
   background-color: #f0f5f9;
+  background-image: url('http://openweathermap.org/img/wn/13d@2x.png');
 }
 
 body.mist {
@@ -68,4 +83,46 @@ body.mist {
   --theme-bg-color: #748da6;
 
   background-color: #f2d7d9;
+  background-image: url('http://openweathermap.org/img/wn/50d@2x.png');
+}
+
+@keyframes animatedBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+@-moz-keyframes animatedBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+@-webkit-keyframes animatedBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+@-ms-keyframes animatedBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+@-o-keyframes animatedBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
 }
