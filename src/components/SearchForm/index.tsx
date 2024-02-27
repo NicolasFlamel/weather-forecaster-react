@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useWeather } from 'context/WeatherContext';
 import { ReactComponent as SearchIcon } from 'assets/images/search-icon-100.svg';
+import Button from 'components/Button';
 
 type Inputs = {
   city: string;
