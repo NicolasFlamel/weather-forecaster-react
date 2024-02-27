@@ -8,15 +8,12 @@
   right: 0%;
 }
 
-.search-bar svg {
-  padding: 5px;
-  cursor: pointer;
+.search-bar > .custom-btn {
+  display: block;
   fill: var(--theme-text-color);
 }
 
-.search-bar svg:hover {
-  padding: 5px;
-  cursor: pointer;
+.search-bar > .custom-btn:hover {
   fill: var(--theme-bg-color);
   background-color: var(--theme-text-color);
 }

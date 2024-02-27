@@ -11,10 +11,12 @@ const ForecastCard = ({ children, classNames, onClick }: ForecastCardProps) => {
     ? [classNames, 'custom-forecast-card']
     : ['custom-forecast-card'];
 
-  return (
-    <section className={customClass.join(' ')} onClick={onClick}>
+  return onClick ? (
+    <button className={customClass.join(' ')} onClick={onClick}>
       {children}
-    </section>
+    </button>
+  ) : (
+    <section className={customClass.join(' ')}>{children}</section>
   );
 };
 

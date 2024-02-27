@@ -11,3 +11,7 @@
   cursor: pointer;
   transform: translate(5px, -5px);
 }
+
+button.custom-forecast-card {
+  background: none;
+}

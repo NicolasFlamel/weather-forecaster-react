@@ -77,7 +77,9 @@ const SearchForm = () => {
           )}
         </form>
       ) : (
-        <SearchIcon width={'30px'} onClick={() => setUserSearch(true)} />
+        <Button onClick={() => setUserSearch(true)}>
+          <SearchIcon width={'30px'} />
+        </Button>
       )}
     </section>
   );
