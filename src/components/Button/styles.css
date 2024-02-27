@@ -5,9 +5,7 @@
 }
 
 .custom-btn:hover {
-  color: var(--theme-blue-btn-text);
-  border: 2px var(--theme-blue-btn-bg) solid;
-  background-color: var(--theme-blue-btn-bg);
+  border: 2px solid var(--theme-border-color);
   border-radius: 9999px;
 }
 

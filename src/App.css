@@ -1,7 +1,4 @@
 .App {
-  --border-color: black;
-  --bg-color: black;
-
   margin: 0 auto;
   max-width: 1024px;
 }
@@ -12,4 +9,9 @@
 
 .App > .weather-main {
   background-color: var(--theme-bg-color);
+}
+
+* {
+  color: var(--theme-text-color);
+  border-color: var(--theme-border-color);
 }

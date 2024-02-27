@@ -1,13 +1,14 @@
 body.clear-sky {
-  --theme-text-color: white;
-  --theme-bg-color: #78c1f3;
+  --theme-bg-color: #86b6f6;
+  --theme-text-color: #176b87;
+  --theme-border-color: #176b87;
 
-  background-color: #cdf5fd;
+  background-color: #eef5ff;
 }
 
 body.few-clouds {
-  --theme-text-color: green;
   --theme-bg-color: green;
+  --theme-text-color: green;
 
   background-color: yellow;
 }
