@@ -1,71 +1,71 @@
 body.clear-sky {
-  --theme-bg-color: #86b6f6;
   --theme-text-color: #176b87;
   --theme-border-color: #176b87;
+  --theme-bg-color: #86b6f6;
 
   background-color: #eef5ff;
 }
 
 body.few-clouds {
-  --theme-bg-color: green;
-  --theme-text-color: blue;
-  --theme-border-color: black;
+  --theme-text-color: #86b6f6;
+  --theme-border-color: #86b6f6;
+  --theme-bg-color: #176b87;
 
-  background-color: yellow;
+  background-color: #eef5ff;
 }
 
 body.scattered-clouds {
-  --theme-bg-color: white;
-  --theme-text-color: black;
-  --theme-border-color: black;
+  --theme-text-color: #0d4c92;
+  --theme-border-color: #0d4c92;
+  --theme-bg-color: #59c1bd;
 
-  background-color: #cdf5fd;
+  background-color: #cff5e7;
 }
 
 body.broken-clouds {
-  --theme-bg-color: white;
-  --theme-text-color: black;
-  --theme-border-color: black;
+  --theme-text-color: #9290c3;
+  --theme-border-color: #9290c3;
+  --theme-bg-color: #1b1a55;
 
-  background-color: #cdf5fd;
+  background-color: #070f2b;
 }
 
 body.shower-rain {
-  --theme-bg-color: white;
-  --theme-text-color: black;
-  --theme-border-color: black;
+  --theme-text-color: #52d3d8;
+  --theme-border-color: #52d3d8;
+  --theme-bg-color: #38419d;
 
-  background-color: #cdf5fd;
+  background-color: #200e3a;
 }
 
 body.rain {
-  --theme-bg-color: white;
-  --theme-text-color: black;
-  --theme-border-color: black;
+  --theme-text-color: #ffadbc;
+  --theme-border-color: #ffadbc;
+  --theme-bg-color: #975c8d;
 
-  background-color: #cdf5fd;
+  background-color: #863a6f;
 }
 
 body.thunderstorm {
-  --theme-bg-color: white;
-  --theme-text-color: black;
-  --theme-border-color: black;
+  --theme-text-color: #97d2ec;
+  --theme-border-color: #97d2ec;
+  --theme-bg-color: #5f6f94;
 
-  background-color: #cdf5fd;
+  background-color: #25316d;
 }
 
 body.snow {
-  --theme-bg-color: white;
-  --theme-text-color: black;
-  --theme-border-color: black;
+  --theme-text-color: #f0f5f9;
+  --theme-border-color: #f0f5f9;
+  --theme-bg-color: #5c99c5;
 
-  background-color: #cdf5fd;
+  background-color: #f0f5f9;
 }
 
 body.mist {
-  --theme-bg-color: white;
-  --theme-text-color: black;
-  --theme-border-color: black;
+  --theme-text-color: #f2d7d9;
+  --theme-border-color: #f2d7d9;
+  --theme-bg-color: #748da6;
 
-  background-color: #cdf5fd;
+  background-color: #f2d7d9;
 }
