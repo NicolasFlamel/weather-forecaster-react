@@ -18,6 +18,10 @@
   background-color: var(--theme-text-color);
 }
 
+.search-bar .search-icon {
+  width: 1.5rem;
+}
+
 .search-error > p {
   position: absolute;
 
