@@ -1,4 +1,5 @@
 import { useContext, createContext, useState, useEffect } from 'react';
+import setTheme from 'Themes';
 import {
   WeatherDataType,
   ForecastDataType,
@@ -58,7 +59,29 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     // eslint-disable-next-line
   }, [location]);
 
+  useEffect(() => {
+    if (detailedData === null && weatherData) {
+      setTheme(weatherData?.weather[0]);
+    } else if (Array.isArray(detailedData)) {
+      setTheme(detailedData[4].weather[0]);
+    } else if (detailedData) {
+      setTheme(detailedData.weather[0]);
+    } else setTheme();
+  }, [weatherData, detailedData]);
+
   const getWeather = async (signal: AbortSignal) => {
+    console.log('fetching storage');
+    const tempWeather = JSON.parse(localStorage.getItem('weatherJSON') || '');
+    const tempForecast = JSON.parse(localStorage.getItem('forecastJSON') || '');
+
+    setWeatherData(tempWeather);
+    setForecastData(tempForecast);
+    setLoadingWeather(false);
+
+    return;
+
+    // TODO: remove lines above
+    // eslint-disable-next-line
     console.log('fetching data');
     const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
     const weatherURL = new URL(
@@ -81,12 +104,15 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
         forecastResponse.json(),
       ]);
 
+      localStorage.setItem('weatherJSON', JSON.stringify(weatherJSON));
+      localStorage.setItem('forecastJSON', JSON.stringify(forecastJSON));
+
       setWeatherData(weatherJSON);
       setForecastData(forecastJSON);
       setLoadingWeather(false);
     } catch (err) {
-      if (err instanceof DOMException && err.name === 'AbortError') return;
-      else console.error(err);
+      // if (err instanceof DOMException && err.name === 'AbortError') return;
+      // else console.error(err);
     }
   };
 
