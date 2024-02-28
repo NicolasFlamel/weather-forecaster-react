@@ -6,7 +6,7 @@
   background-color: var(--theme-card-color);
 }
 
-.custom-forecast-card {
+button.custom-forecast-card {
   user-select: none;
 }
 
