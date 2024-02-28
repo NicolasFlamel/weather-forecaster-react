@@ -1,16 +1,16 @@
 import './App.css';
 import { Header, Weather } from './components';
-import { ThemeProvider, WeatherProvider } from 'context';
+import { UnitProvider, WeatherProvider } from 'context';
 
 function App() {
   return (
     <div className="App">
-      <WeatherProvider>
-        <ThemeProvider>
+      <UnitProvider>
+        <WeatherProvider>
           <Header />
           <Weather />
-        </ThemeProvider>
-      </WeatherProvider>
+        </WeatherProvider>
+      </UnitProvider>
     </div>
   );
 }

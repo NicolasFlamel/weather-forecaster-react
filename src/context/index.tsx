@@ -1,4 +1,8 @@
-import { ThemeProvider } from './ThemeContext';
+import { UnitProvider } from './UnitContext';
 import { WeatherProvider } from './WeatherContext';
 
-export { ThemeProvider, WeatherProvider };
+import { useUnit } from './UnitContext';
+import { useWeather } from './WeatherContext';
+
+export { UnitProvider, WeatherProvider };
+export { useUnit, useWeather };

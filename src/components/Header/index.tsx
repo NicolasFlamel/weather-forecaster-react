@@ -1,16 +1,19 @@
 import './styles.css';
-import { useWeather } from 'context/WeatherContext';
 import { Button, Search } from 'components';
+import { useUnit } from 'context';
 
 const Header = () => {
-  const { isMetric, changeMetric } = useWeather();
+  const { isMetric, toggleMetric } = useUnit();
+
   return (
     <header className="weather-header">
       <h1>Weather Dashboard</h1>
-      <Button className="convert-unit" onClick={changeMetric}>
-        {isMetric ? 'C°' : 'F°'}
-      </Button>
-      <Search />
+      <section className="controls">
+        <Search />
+        <Button className="convert-unit" onClick={toggleMetric}>
+          {isMetric ? 'C°' : 'F°'}
+        </Button>
+      </section>
     </header>
   );
 };

@@ -1,7 +1,9 @@
+import './styles.css';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Button } from 'components';
 import { useWeather } from 'context/WeatherContext';
+import { ReactComponent as SearchIcon } from 'assets/images/search-icon-100.svg';
+import Button from 'components/Button';
 
 type Inputs = {
   city: string;
@@ -10,12 +12,13 @@ type Inputs = {
 const SearchForm = () => {
   const { setLocation } = useWeather();
   const [searchLocation, setSearchLocation] = useState('sacramento');
-  const [disable, setDisabled] = useState(false);
+  const [userSearch, setUserSearch] = useState(false);
   const {
     handleSubmit,
     register,
-    formState: { errors },
-  } = useForm<Inputs>();
+    reset,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm<Inputs>({ shouldUnregister: true });
 
   useEffect(() => {
     const controller = new AbortController();
@@ -38,32 +41,48 @@ const SearchForm = () => {
       }
     };
 
-    setDisabled(true);
-    fetchLocation(searchLocation, controller.signal).finally(() =>
-      setDisabled(false),
-    );
+    fetchLocation(searchLocation, controller.signal);
 
     return () => controller.abort();
   }, [searchLocation, setLocation]);
 
+  useEffect(() => {
+    if (isSubmitSuccessful) reset();
+  }, [isSubmitSuccessful, reset]);
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { city } = data;
-    setSearchLocation(city);
 
-    setDisabled(false);
+    setSearchLocation(city);
+    setUserSearch(false);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {errors.city && <section>Cannot be empty</section>}
-      <input
-        placeholder={'City Name'}
-        {...register('city', { required: true })}
-      />
-      <Button type={'submit'} disabled={disable}>
-        Submit
-      </Button>
-    </form>
+    <section className="search-bar">
+      {userSearch ? (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <section className="search-input">
+            <input
+              autoFocus
+              placeholder={'City Name'}
+              {...register('city', {
+                required: true,
+                onBlur: (e) => setUserSearch(false),
+              })}
+            />
+          </section>
+          {errors.city && (
+            <section className="search-error">
+              <p>Cannot be empty</p>
+            </section>
+          )}
+        </form>
+      ) : (
+        <Button onClick={() => setUserSearch(true)}>
+          <SearchIcon className="search-icon" />
+        </Button>
+      )}
+    </section>
   );
 };
 

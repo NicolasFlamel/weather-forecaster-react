@@ -1,4 +1,5 @@
 import { useContext, createContext, useState, useEffect } from 'react';
+import setTheme from 'Themes';
 import {
   WeatherDataType,
   ForecastDataType,
@@ -21,8 +22,6 @@ interface WeatherContextInterface {
   forecastData: ForecastDataType | undefined;
   detailedData: WeatherDataType | ForecastDataListType[] | null;
   setDetailedDataTo: (day: ForecastDayRange | null) => void;
-  isMetric: boolean;
-  changeMetric: () => void;
   loadingWeather: boolean;
 }
 
@@ -49,7 +48,6 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   const [detailedData, setDetailedData] = useState<
     WeatherDataType | ForecastDataListType[] | null
   >(null);
-  const [isMetric, setIsMetric] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -61,7 +59,18 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     // eslint-disable-next-line
   }, [location]);
 
+  useEffect(() => {
+    if (detailedData === null && weatherData) {
+      setTheme(weatherData?.weather[0]);
+    } else if (Array.isArray(detailedData)) {
+      setTheme(detailedData[4].weather[0]);
+    } else if (detailedData) {
+      setTheme(detailedData.weather[0]);
+    } else setTheme();
+  }, [weatherData, detailedData]);
+
   const getWeather = async (signal: AbortSignal) => {
+    console.log('fetching data');
     const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
     const weatherURL = new URL(
       `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${key}&units=metric`,
@@ -83,12 +92,15 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
         forecastResponse.json(),
       ]);
 
+      localStorage.setItem('weatherJSON', JSON.stringify(weatherJSON));
+      localStorage.setItem('forecastJSON', JSON.stringify(forecastJSON));
+
       setWeatherData(weatherJSON);
       setForecastData(forecastJSON);
       setLoadingWeather(false);
     } catch (err) {
-      if (err instanceof DOMException && err.name === 'AbortError') return;
-      else console.error(err);
+      // if (err instanceof DOMException && err.name === 'AbortError') return;
+      // else console.error(err);
     }
   };
 
@@ -110,18 +122,12 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     }
   };
 
-  const changeMetric = () => {
-    setIsMetric((prev) => !prev);
-  };
-
   const value = {
     setLocation,
     weatherData,
     forecastData,
     detailedData,
     setDetailedDataTo,
-    isMetric,
-    changeMetric,
     loadingWeather,
   };
 

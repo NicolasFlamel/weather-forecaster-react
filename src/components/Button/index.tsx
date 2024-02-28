@@ -1,9 +1,7 @@
 import './styles.css';
 import { ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: string;
-}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const Button = ({
   children,
