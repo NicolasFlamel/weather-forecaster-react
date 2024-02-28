@@ -33,7 +33,7 @@ const WeatherForecast = () => {
           return (
             <li key={forecast.dt}>
               <Card
-                className='forecast-card'
+                className="forecast-card"
                 onClick={() => handleClick((index + 1) as ForecastDayRange)}
               >
                 <img

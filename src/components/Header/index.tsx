@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <header className="weather-header">
-      <Card className='header-card'>
+      <Card className="header-card">
         <h1>Weather Dashboard</h1>
         <section className="controls">
           <Search />
