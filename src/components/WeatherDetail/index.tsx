@@ -1,6 +1,6 @@
 import './styles.css';
 import { useWeather } from 'context/WeatherContext';
-import { Button, ForecastDetails, ReportDetails } from 'components';
+import { Button, ExpandedForecast, ExpandedReport } from 'components';
 
 const WeatherDetail = () => {
   const { detailedData, setDetailedDataTo } = useWeather();
@@ -18,9 +18,9 @@ const WeatherDetail = () => {
         X
       </Button>
       {Array.isArray(detailedData) ? (
-        <ForecastDetails data={detailedData} />
+        <ExpandedForecast data={detailedData} />
       ) : (
-        <ReportDetails data={detailedData} />
+        <ExpandedReport data={detailedData} />
       )}
     </section>
   );

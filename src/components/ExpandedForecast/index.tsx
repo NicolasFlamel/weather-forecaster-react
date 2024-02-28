@@ -9,7 +9,7 @@ interface ForecastDetailsProps {
   data: ForecastDataListType[];
 }
 
-const ForecastDetails = ({ data }: ForecastDetailsProps) => {
+const ExpandedForecast = ({ data }: ForecastDetailsProps) => {
   const { isMetric } = useUnit();
 
   return (
@@ -48,4 +48,4 @@ const ForecastDetails = ({ data }: ForecastDetailsProps) => {
   );
 };
 
-export default ForecastDetails;
+export default ExpandedForecast;
