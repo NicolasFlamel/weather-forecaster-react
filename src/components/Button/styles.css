@@ -18,4 +18,13 @@
   line-height: 1rem;
   padding: 1rem;
   vertical-align: middle;
+  border: none;
+  color: white;
+  background-color: rgb(247, 78, 78);
+}
+
+.close-btn:hover {
+  border: none;
+  color: white;
+  background-color: red;
 }
