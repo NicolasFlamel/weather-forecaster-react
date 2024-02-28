@@ -1,17 +1,28 @@
 import './styles.css';
 import { useWeather } from 'context/WeatherContext';
-import { WeatherDetail, WeatherForecast, WeatherReport } from 'components';
+import {
+  Card,
+  WeatherDetail,
+  WeatherForecast,
+  WeatherReport,
+} from 'components';
 
 const Weather = () => {
   const { weatherData, detailedData } = useWeather();
 
   return (
     <main className="weather-main">
-      <h1>{weatherData?.name}</h1>
+      <Card className="weather-name">
+        <h1>{weatherData?.name}</h1>
+      </Card>
       {detailedData === null ? (
         <section className="weather-summary">
-          <WeatherReport />
-          <WeatherForecast />
+          <Card>
+            <WeatherReport />
+          </Card>
+          <Card>
+            <WeatherForecast />
+          </Card>
         </section>
       ) : (
         <WeatherDetail />

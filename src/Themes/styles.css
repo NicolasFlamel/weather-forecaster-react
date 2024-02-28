@@ -6,9 +6,10 @@ body {
 }
 
 body.clear-sky {
-  --theme-text-color: #176b87;
-  --theme-border-color: #176b87;
-  --theme-bg-color: #86b6f6;
+  --theme-text-color: #41A6FE;
+  --theme-border-color: #41A6FE;
+  --theme-card-color: #93E1FE;
+  --theme-bg-color: #348EFF;
 
   background-color: #eef5ff;
   background-size: 100px;
