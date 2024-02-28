@@ -1,7 +1,7 @@
 import './styles.css';
 import { ForecastDataListType } from 'types';
 import dayjs from 'dayjs';
-import ForecastCard from 'components/ForecastCard';
+import Card from 'components/Card';
 import { getSpeedString, getTempString } from 'helpers/convert';
 import { useUnit } from 'context';
 
@@ -26,7 +26,7 @@ const ForecastDetails = ({ data }: ForecastDetailsProps) => {
 
           return (
             <li key={forecast.dt}>
-              <ForecastCard>
+              <Card>
                 <img
                   className="weather-img weather-icon"
                   title={forecast.weather[0].description}
@@ -39,7 +39,7 @@ const ForecastDetails = ({ data }: ForecastDetailsProps) => {
                 <p>Wind Speed: {getSpeedString(speed, isMetric)}</p>
                 <p>Humidity: {humidity + '%'}</p>
                 <p>Precipitation chance: {Math.floor(forecast.pop * 100)}%</p>
-              </ForecastCard>
+              </Card>
             </li>
           );
         })}

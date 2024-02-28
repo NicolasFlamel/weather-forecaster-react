@@ -3,15 +3,14 @@
 
   border-width: 1px;
   border-style: solid;
+  background-color: var(--theme-card-color);
+}
 
+.custom-forecast-card {
   user-select: none;
 }
 
-.custom-forecast-card:hover {
+button.custom-forecast-card:hover {
   cursor: pointer;
   transform: translate(5px, -5px);
-}
-
-button.custom-forecast-card {
-  background: none;
 }

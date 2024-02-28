@@ -1,14 +1,14 @@
 import './styles.css';
 import { ReactNode } from 'react';
 
-interface ForecastCardProps extends React.DOMAttributes<HTMLElement> {
+interface CardProps extends React.DOMAttributes<HTMLElement> {
   children: ReactNode;
-  classNames?: string;
+  className?: string;
 }
 
-const ForecastCard = ({ children, classNames, onClick }: ForecastCardProps) => {
-  const customClass = classNames
-    ? [classNames, 'custom-forecast-card']
+const Card = ({ children, className, onClick }: CardProps) => {
+  const customClass = className
+    ? [className, 'custom-forecast-card']
     : ['custom-forecast-card'];
 
   return onClick ? (
@@ -20,4 +20,4 @@ const ForecastCard = ({ children, classNames, onClick }: ForecastCardProps) => {
   );
 };
 
-export default ForecastCard;
+export default Card;

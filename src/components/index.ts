@@ -1,7 +1,7 @@
 import Button from './Button';
 import ForecastDetails from './DetailsForecast';
 import ReportDetails from './DetailsReport';
-import ForecastCard from './ForecastCard';
+import Card from './Card';
 import Header from './Header';
 import Search from './Search';
 import SearchForm from './SearchForm';
@@ -15,7 +15,7 @@ export {
   Button,
   ForecastDetails,
   ReportDetails,
-  ForecastCard,
+  Card,
   Header,
   Search,
   SearchForm,

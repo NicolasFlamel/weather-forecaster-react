@@ -1,7 +1,7 @@
 import './styles.css';
 import dayjs from 'dayjs';
 import { useUnit, useWeather } from 'context';
-import { ForecastCard } from 'components';
+import { Card } from 'components';
 import { ForecastDayRange } from 'types';
 import { getSpeedString, getTempString } from 'helpers/convert';
 
@@ -32,7 +32,7 @@ const WeatherForecast = () => {
 
           return (
             <li key={forecast.dt}>
-              <ForecastCard
+              <Card
                 onClick={() => handleClick((index + 1) as ForecastDayRange)}
               >
                 <img
@@ -43,17 +43,7 @@ const WeatherForecast = () => {
                 />
                 <p>{forecastDate.format('dddd')}</p>
 
-                <p>
-                  Temperature: {getTempString(forecast.main.temp, isMetric)}
-                </p>
-                <p>
-                  Fees like: {getTempString(forecast.main.feels_like, isMetric)}
-                </p>
-                <p>
-                  Wind Speed: {getSpeedString(forecast.wind.speed, isMetric)}
-                </p>
-                <p>Precipitation chance: {Math.floor(forecast.pop * 100)}%</p>
-              </ForecastCard>
+              </Card>
             </li>
           );
         })}
