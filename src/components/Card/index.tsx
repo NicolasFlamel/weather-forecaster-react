@@ -7,9 +7,7 @@ interface CardProps extends React.DOMAttributes<HTMLElement> {
 }
 
 const Card = ({ children, className, onClick }: CardProps) => {
-  const customClass = className
-    ? [className, 'custom-forecast-card']
-    : ['custom-forecast-card'];
+  const customClass = className ? [className, 'custom-card'] : ['custom-card'];
 
   return onClick ? (
     <button className={customClass.join(' ')} onClick={onClick}>

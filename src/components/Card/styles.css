@@ -1,4 +1,4 @@
-.custom-forecast-card {
+.custom-card {
   padding: 1rem;
 
   border-width: 1px;
@@ -6,11 +6,11 @@
   background-color: var(--theme-card-color);
 }
 
-button.custom-forecast-card {
+button.custom-card {
   user-select: none;
 }
 
-button.custom-forecast-card:hover {
+button.custom-card:hover {
   cursor: pointer;
   transform: translate(5px, -5px);
 }
