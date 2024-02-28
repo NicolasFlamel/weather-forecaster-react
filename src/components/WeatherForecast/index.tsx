@@ -33,6 +33,7 @@ const WeatherForecast = () => {
           return (
             <li key={forecast.dt}>
               <Card
+                className='forecast-card'
                 onClick={() => handleClick((index + 1) as ForecastDayRange)}
               >
                 <img
@@ -41,8 +42,23 @@ const WeatherForecast = () => {
                   alt={forecast.weather[0].description}
                   src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 />
-                <p>{forecastDate.format('dddd')}</p>
+                <p className="forecast-date">
+                  {forecastDate.format('ddd | DD')}
+                </p>
 
+                <article className="forecast-data">
+                  <p>Temp: {getTempString(forecast.main.temp, isMetric)}</p>
+                  <p>
+                    Fees like:{' '}
+                    {getTempString(forecast.main.feels_like, isMetric)}
+                  </p>
+                </article>
+                <article className="forecast-data">
+                  <p>
+                    Wind Speed: {getSpeedString(forecast.wind.speed, isMetric)}
+                  </p>
+                  <p>Precipitation chance: {Math.floor(forecast.pop * 100)}%</p>
+                </article>
               </Card>
             </li>
           );
