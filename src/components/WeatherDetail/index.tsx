@@ -13,7 +13,7 @@ const WeatherDetail = () => {
 
   return (
     <Card className="weather-details">
-      <h1>Detailed Weather</h1>
+      <h2>Detailed Weather</h2>
       <Button className="close-details close-btn" onClick={handleClose}>
         X
       </Button>

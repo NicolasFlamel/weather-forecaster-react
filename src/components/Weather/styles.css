@@ -9,3 +9,8 @@
 .weather-name {
   display: inline-block;
 }
+
+.weather-main > *,
+.weather-summary > * {
+  margin: 0.5rem 0;
+}

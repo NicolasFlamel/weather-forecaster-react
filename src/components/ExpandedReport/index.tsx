@@ -10,7 +10,7 @@ const ExpandedReport = ({ data }: ReportDetailsProps) => {
 
   return (
     <section className="report-details">
-      <h1>Current Report</h1>
+      <h2>Current Report</h2>
     </section>
   );
 };

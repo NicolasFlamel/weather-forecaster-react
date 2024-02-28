@@ -25,7 +25,7 @@ const WeatherForecast = () => {
 
   return (
     <section className="forecast">
-      <h1>Forecast</h1>
+      <h2>Forecast</h2>
       <ol className="forecast-list">
         {forecastArray?.map((forecast, index) => {
           const forecastDate = dayjs(forecast.dt_txt);

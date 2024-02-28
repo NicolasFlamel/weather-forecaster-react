@@ -19,7 +19,7 @@ const WeatherReport = () => {
 
   return (
     <section className="weather-report">
-      <h1>Current Weather</h1>
+      <h2>Current Weather</h2>
       <section>
         <img
           className="weather-img weather-icon"
