@@ -31,7 +31,7 @@ const ExpandedForecast = ({ data }: ForecastDetailsProps) => {
                   className="weather-img weather-icon"
                   title={forecast.weather[0].description}
                   alt={forecast.weather[0].description}
-                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+                  src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 />
                 <p>{forecastDate.format('dddd: hh:mm A')}</p>
                 <p>Temperature: {getTempString(temp, isMetric)}</p>

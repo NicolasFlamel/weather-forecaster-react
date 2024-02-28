@@ -25,7 +25,7 @@ const WeatherReport = () => {
           className="weather-img weather-icon"
           title={weatherData.weather[0].description}
           alt={weatherData.weather[0].description}
-          src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
         />
       </section>
 
