@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/weather-forecaster-react/static/css/main.12e2b6aa.css",
-    "main.js": "/weather-forecaster-react/static/js/main.da6256cd.js",
+    "main.js": "/weather-forecaster-react/static/js/main.43d20fdf.js",
     "static/js/453.e82db31d.chunk.js": "/weather-forecaster-react/static/js/453.e82db31d.chunk.js",
     "index.html": "/weather-forecaster-react/index.html",
     "static/media/search-icon-100.svg": "/weather-forecaster-react/static/media/search-icon-100.316ecf839d23b8a484ee3078bd0d1298.svg",
     "main.12e2b6aa.css.map": "/weather-forecaster-react/static/css/main.12e2b6aa.css.map",
-    "main.da6256cd.js.map": "/weather-forecaster-react/static/js/main.da6256cd.js.map",
+    "main.43d20fdf.js.map": "/weather-forecaster-react/static/js/main.43d20fdf.js.map",
     "453.e82db31d.chunk.js.map": "/weather-forecaster-react/static/js/453.e82db31d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.12e2b6aa.css",
-    "static/js/main.da6256cd.js"
+    "static/js/main.43d20fdf.js"
   ]
 }
