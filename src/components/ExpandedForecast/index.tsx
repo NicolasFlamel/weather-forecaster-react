@@ -26,7 +26,7 @@ const ExpandedForecast = ({ data }: ForecastDetailsProps) => {
 
           return (
             <li key={forecast.dt}>
-              <Card className='forecast-card'>
+              <Card className="forecast-card">
                 <img
                   className="weather-img weather-icon"
                   title={forecast.weather[0].description}

@@ -24,7 +24,7 @@
 }
 
 *:focus {
-  outline: 5px dashed var(--theme-text-color);
+  outline: 5px solid var(--theme-text-color);
 }
 
 @media (max-width: 1060px) {

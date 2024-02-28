@@ -1,13 +1,17 @@
 .custom-btn {
   margin: auto;
+  padding-block: 1px;
+  padding-inline: 6px;
 
   cursor: pointer;
   background: none;
-  border: 2px solid var(--theme-bg-color);
+  fill: var(--theme-text-color);
+  border: 2px solid var(--theme-card-color);
 }
 
 .custom-btn:hover {
-  color: var(--theme-bg-color);
+  color: var(--theme-card-color);
+  fill: var(--theme-card-color);
   background-color: var(--theme-text-color);
   border: 2px solid var(--theme-text-color);
 }
@@ -17,7 +21,6 @@
   min-height: 30px;
   width: 2rem;
   height: 2rem;
-  vertical-align: middle;
   border: none;
   color: white;
   background-color: rgb(247, 78, 78);
