@@ -14,7 +14,7 @@ const ExpandedForecast = ({ data }: ForecastDetailsProps) => {
 
   return (
     <section className="forecast-details">
-      <h1>Forecast</h1>
+      <h2>Forecast</h2>
       <ul>
         {data.map((forecast) => {
           const {
@@ -31,7 +31,7 @@ const ExpandedForecast = ({ data }: ForecastDetailsProps) => {
                   className="weather-img weather-icon"
                   title={forecast.weather[0].description}
                   alt={forecast.weather[0].description}
-                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+                  src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 />
                 <p>{forecastDate.format('dddd: hh:mm A')}</p>
                 <p>Temperature: {getTempString(temp, isMetric)}</p>
