@@ -31,3 +31,7 @@
   color: white;
   background-color: red;
 }
+
+.close-btn:focus {
+  outline: 5px solid rgb(247, 78, 78);
+}
