@@ -10,12 +10,6 @@
 
 .search-bar > .custom-btn {
   display: block;
-  fill: var(--theme-text-color);
-}
-
-.search-bar > .custom-btn:hover {
-  fill: var(--theme-bg-color);
-  background-color: var(--theme-text-color);
 }
 
 .search-bar .search-icon {
@@ -34,7 +28,7 @@
 }
 
 .search-input > input {
-  background-color: var(--theme-bg-color);
+  background: none;
   padding: 0 1rem;
   border-radius: 5px;
 }

@@ -5,14 +5,14 @@ interface ReportDetailsProps {
   data: WeatherDataType;
 }
 
-const ReportDetails = ({ data }: ReportDetailsProps) => {
+const ExpandedReport = ({ data }: ReportDetailsProps) => {
   console.log(data);
 
   return (
     <section className="report-details">
-      <h1>Current Report</h1>
+      <h2>Current Report</h2>
     </section>
   );
 };
 
-export default ReportDetails;
+export default ExpandedReport;

@@ -1,6 +1,6 @@
 import './styles.css';
 import { useWeather } from 'context/WeatherContext';
-import { Button, ForecastDetails, ReportDetails } from 'components';
+import { Button, Card, ExpandedForecast, ExpandedReport } from 'components';
 
 const WeatherDetail = () => {
   const { detailedData, setDetailedDataTo } = useWeather();
@@ -12,17 +12,17 @@ const WeatherDetail = () => {
   };
 
   return (
-    <section className="weather-details">
-      <h1>Detailed Weather</h1>
+    <Card className="weather-details">
+      <h2>Detailed Weather</h2>
       <Button className="close-details close-btn" onClick={handleClose}>
         X
       </Button>
       {Array.isArray(detailedData) ? (
-        <ForecastDetails data={detailedData} />
+        <ExpandedForecast data={detailedData} />
       ) : (
-        <ReportDetails data={detailedData} />
+        <ExpandedReport data={detailedData} />
       )}
-    </section>
+    </Card>
   );
 };
 

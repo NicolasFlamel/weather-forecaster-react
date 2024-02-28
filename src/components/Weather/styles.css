@@ -5,3 +5,12 @@
   border-width: 1px;
   border-style: solid;
 }
+
+.weather-name {
+  display: inline-block;
+}
+
+.weather-main > *,
+.weather-summary > * {
+  margin: 0.5rem 0;
+}

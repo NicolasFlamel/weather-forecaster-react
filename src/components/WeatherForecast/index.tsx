@@ -1,7 +1,7 @@
 import './styles.css';
 import dayjs from 'dayjs';
 import { useUnit, useWeather } from 'context';
-import { ForecastCard } from 'components';
+import { Card } from 'components';
 import { ForecastDayRange } from 'types';
 import { getSpeedString, getTempString } from 'helpers/convert';
 
@@ -25,35 +25,41 @@ const WeatherForecast = () => {
 
   return (
     <section className="forecast">
-      <h1>Forecast</h1>
+      <h2>Forecast</h2>
       <ol className="forecast-list">
         {forecastArray?.map((forecast, index) => {
           const forecastDate = dayjs(forecast.dt_txt);
 
           return (
             <li key={forecast.dt}>
-              <ForecastCard
+              <Card
+                className="forecast-card"
                 onClick={() => handleClick((index + 1) as ForecastDayRange)}
               >
                 <img
                   className="weather-img weather-icon"
                   title={forecast.weather[0].description}
                   alt={forecast.weather[0].description}
-                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+                  src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 />
-                <p>{forecastDate.format('dddd')}</p>
+                <p className="forecast-date">
+                  {forecastDate.format('ddd | DD')}
+                </p>
 
-                <p>
-                  Temperature: {getTempString(forecast.main.temp, isMetric)}
-                </p>
-                <p>
-                  Fees like: {getTempString(forecast.main.feels_like, isMetric)}
-                </p>
-                <p>
-                  Wind Speed: {getSpeedString(forecast.wind.speed, isMetric)}
-                </p>
-                <p>Precipitation chance: {Math.floor(forecast.pop * 100)}%</p>
-              </ForecastCard>
+                <article className="forecast-data">
+                  <p>Temp: {getTempString(forecast.main.temp, isMetric)}</p>
+                  <p>
+                    Fees like:{' '}
+                    {getTempString(forecast.main.feels_like, isMetric)}
+                  </p>
+                </article>
+                <article className="forecast-data">
+                  <p>
+                    Wind Speed: {getSpeedString(forecast.wind.speed, isMetric)}
+                  </p>
+                  <p>Precipitation chance: {Math.floor(forecast.pop * 100)}%</p>
+                </article>
+              </Card>
             </li>
           );
         })}

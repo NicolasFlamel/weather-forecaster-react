@@ -1,0 +1,17 @@
+.custom-card {
+  padding: 1rem;
+
+  border-width: 1px;
+  border-style: solid;
+  background-color: var(--theme-card-color);
+}
+
+button.custom-card {
+  user-select: none;
+}
+
+button.custom-card:hover {
+  cursor: pointer;
+  transform: translate(5px, -5px);
+  box-shadow: -10px 5px 5px var(--theme-bg-color);
+}

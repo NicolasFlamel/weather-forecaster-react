@@ -22,3 +22,13 @@
   color: var(--theme-text-color);
   font-style: italic;
 }
+
+*:focus {
+  outline: 5px solid var(--theme-text-color);
+}
+
+@media (max-width: 1060px) {
+  .App {
+    margin: 0 1rem;
+  }
+}
