@@ -13,10 +13,10 @@
 }
 
 .close-btn {
-  height: 50px;
-  width: 50px;
-  line-height: 1rem;
-  padding: 1rem;
+  min-width: 30px;
+  min-height: 30px;
+  width: 2rem;
+  height: 2rem;
   vertical-align: middle;
   border: none;
   color: white;
