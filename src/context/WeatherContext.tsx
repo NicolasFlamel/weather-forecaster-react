@@ -70,18 +70,6 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   }, [weatherData, detailedData]);
 
   const getWeather = async (signal: AbortSignal) => {
-    console.log('fetching storage');
-    const tempWeather = JSON.parse(localStorage.getItem('weatherJSON') || '');
-    const tempForecast = JSON.parse(localStorage.getItem('forecastJSON') || '');
-
-    setWeatherData(tempWeather);
-    setForecastData(tempForecast);
-    setLoadingWeather(false);
-
-    return;
-
-    // TODO: remove lines above
-    // eslint-disable-next-line
     console.log('fetching data');
     const key = process.env.REACT_APP_OPEN_WEATHER_KEY;
     const weatherURL = new URL(
