@@ -50,34 +50,35 @@ body.broken-clouds {
 }
 
 body.shower-rain {
-  --theme-text-color: #38419dcc;
-  --theme-border-color: #38419dcc;
-  --theme-card-color: #52d3d8;
-  --theme-bg-color: #38419dcc;
-
-  background-color: #200e3a;
-  background-size: 100px;
-  background-image: url('http://openweathermap.org/img/wn/09d@2x.png');
-}
-
-body.rain {
-  --theme-text-color: #975c8dcc;
-  --theme-border-color: #975c8dcc;
-  --theme-card-color: #ffadbc;
-  --theme-bg-color: #975c8dcc;
-
-  background-color: #863a6f;
-  background-size: 100px;
-  background-image: url('http://openweathermap.org/img/wn/10d@2x.png');
-}
-
-body.thunderstorm {
   --theme-text-color: #5f6f94cc;
   --theme-border-color: #5f6f94cc;
   --theme-card-color: #97d2ec;
   --theme-bg-color: #5f6f94cc;
 
   background-color: #25316d;
+  background-size: 100px;
+  background-image: url('http://openweathermap.org/img/wn/09d@2x.png');
+}
+
+body.rain {
+  --theme-text-color: #38419dcc;
+  --theme-border-color: #38419dcc;
+  --theme-card-color: #22afb4;
+
+  --theme-bg-color: #38419dcc;
+
+  background-color: #200e3a;
+  background-size: 100px;
+  background-image: url('http://openweathermap.org/img/wn/10d@2x.png');
+}
+
+body.thunderstorm {
+  --theme-text-color: #975c8dcc;
+  --theme-border-color: #975c8dcc;
+  --theme-card-color: #ffadbc;
+  --theme-bg-color: #975c8dcc;
+
+  background-color: #863a6f;
   background-size: 100px;
   background-image: url('http://openweathermap.org/img/wn/11d@2x.png');
 }
