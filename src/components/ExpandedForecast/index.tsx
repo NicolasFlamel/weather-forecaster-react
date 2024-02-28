@@ -14,7 +14,7 @@ const ExpandedForecast = ({ data }: ForecastDetailsProps) => {
 
   return (
     <section className="forecast-details">
-      <h1>Forecast</h1>
+      <h2>Forecast</h2>
       <ul>
         {data.map((forecast) => {
           const {
