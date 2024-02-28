@@ -26,3 +26,9 @@
 *:focus {
   outline: 5px dashed var(--theme-text-color);
 }
+
+@media (max-width: 1060px) {
+  .App {
+    margin: 0 1rem;
+  }
+}
