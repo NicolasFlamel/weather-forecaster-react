@@ -20,6 +20,8 @@ jobs:
         run: |
           npm ci
           npm run build
+        env:
+          REACT_APP_OPEN_WEATHER_KEY: ${{ secrets.REACT_APP_OPEN_WEATHER_KEY }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
