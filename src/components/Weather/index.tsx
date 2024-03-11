@@ -7,13 +7,14 @@ import {
   WeatherForecast,
   WeatherReport,
 } from 'components';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const Weather = () => {
-  const { weatherData, detailedData } = useWeather();
+  const { weatherData } = useWeather();
+  const [summaryView, setSummaryView] = useState(true);
   const summaryRef = useRef(null);
   const detailsRef = useRef(null);
-  const nodeRef = detailedData === null ? summaryRef : detailsRef;
+  const nodeRef = summaryView ? summaryRef : detailsRef;
 
   return (
     <main className="weather-main">
@@ -22,23 +23,29 @@ const Weather = () => {
       </Card>
       <SwitchTransition>
         <CSSTransition
-          key={detailedData === null ? 'summary' : 'details'}
+          key={summaryView ? 'summary' : 'details'}
           nodeRef={nodeRef}
-          classNames="fade"
-          timeout={100}
+          classNames="balloon"
+          timeout={500}
         >
-          {detailedData === null ? (
-            <section className="weather-summary" ref={summaryRef}>
+          {summaryView ? (
+            <section
+              className="weather-display weather-summary "
+              ref={summaryRef}
+            >
               <Card>
                 <WeatherReport />
               </Card>
               <Card>
-                <WeatherForecast />
+                <WeatherForecast setView={setSummaryView} />
               </Card>
             </section>
           ) : (
-            <section className="weather-details" ref={detailsRef}>
-              <WeatherDetail />
+            <section
+              className="weather-display weather-details"
+              ref={detailsRef}
+            >
+              <WeatherDetail setView={setSummaryView} />
             </section>
           )}
         </CSSTransition>

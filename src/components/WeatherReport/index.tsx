@@ -1,4 +1,5 @@
 import './styles.css';
+import setTheme from 'Themes';
 import { Button } from 'components';
 import { useUnit, useWeather } from 'context';
 import { getSpeedString, getTempString } from 'helpers/convert';
@@ -11,6 +12,8 @@ const WeatherReport = () => {
   else if (!weatherData) {
     console.error('!weatherData');
     return <h1 className="error">Error !weatherData</h1>;
+  } else {
+    setTheme(weatherData.weather[0]);
   }
 
   const handleClick = () => {

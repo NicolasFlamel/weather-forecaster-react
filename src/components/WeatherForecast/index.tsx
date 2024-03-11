@@ -4,8 +4,13 @@ import { useUnit, useWeather } from 'context';
 import { Card } from 'components';
 import { ForecastDayRange } from 'types';
 import { getSpeedString, getTempString } from 'helpers/convert';
+import { Dispatch, SetStateAction } from 'react';
 
-const WeatherForecast = () => {
+interface WeatherForecastProps {
+  setView: Dispatch<SetStateAction<boolean>>;
+}
+
+const WeatherForecast = ({ setView }: WeatherForecastProps) => {
   const { forecastData, setDetailedDataTo, loadingWeather } = useWeather();
   const { isMetric } = useUnit();
   const forecastArray = forecastData?.list.filter((forecast) =>
@@ -19,6 +24,8 @@ const WeatherForecast = () => {
     if (!section) setDetailedDataTo(0);
     else if (section > 0 && section < 6) setDetailedDataTo(section);
     else console.error('handleClick', section);
+
+    setView((prev) => !prev);
   };
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
