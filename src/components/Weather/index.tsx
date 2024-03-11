@@ -10,23 +10,31 @@ import {
 import { useRef, useState } from 'react';
 
 const Weather = () => {
-  const { weatherData } = useWeather();
+  const { weatherData, loadingWeather } = useWeather();
   const [summaryView, setSummaryView] = useState(true);
-  const summaryRef = useRef(null);
-  const detailsRef = useRef(null);
+  const summaryRef = useRef<HTMLElement>(null);
+  const detailsRef = useRef<HTMLElement>(null);
   const nodeRef = summaryView ? summaryRef : detailsRef;
+
+  if (loadingWeather) return <h1>Loading</h1>;
 
   return (
     <main className="weather-main">
       <Card className="weather-name">
-        <h1>{weatherData?.name}</h1>
+        <h1>
+          {weatherData?.name} - {weatherData?.sys.country}
+        </h1>
       </Card>
       <SwitchTransition>
         <CSSTransition
           key={summaryView ? 'summary' : 'details'}
           nodeRef={nodeRef}
           classNames="balloon"
-          timeout={500}
+          addEndListener={(done: () => void) => {
+            if (!nodeRef.current) return done();
+
+            nodeRef.current.addEventListener('transitionend', done, false);
+          }}
         >
           {summaryView ? (
             <section

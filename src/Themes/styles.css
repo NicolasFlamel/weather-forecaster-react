@@ -1,8 +1,14 @@
 body {
+  --transition-time: 0.25s;
+
+  background-size: 100px;
   background-attachment: fixed;
   background-position: center;
 
   animation: animatedBackground 10s linear infinite;
+  transition:
+    background-color var(--transition-time) linear,
+    background-image var(--transition-time) linear;
 }
 
 body.clear-sky {
@@ -12,7 +18,6 @@ body.clear-sky {
   --theme-bg-color: #348effcc;
 
   background-color: #eef5ff;
-  background-size: 100px;
   background-image: url('../assets/images/brightness-high-fill.png');
 }
 
@@ -23,7 +28,6 @@ body.few-clouds {
   --theme-bg-color: #176b87cc;
 
   background-color: #86b6f6;
-  background-size: 100px;
   background-image: url('https://openweathermap.org/img/wn/02n@2x.png');
 }
 
@@ -34,7 +38,6 @@ body.scattered-clouds {
   --theme-bg-color: #59c1bdcc;
 
   background-color: #0d4c92;
-  background-size: 100px;
   background-image: url('https://openweathermap.org/img/wn/03d@2x.png');
 }
 
@@ -45,7 +48,6 @@ body.broken-clouds {
   --theme-bg-color: #ffffffcc;
 
   background-color: #333333;
-  background-size: 100px;
   background-image: url('https://openweathermap.org/img/wn/04d@2x.png');
 }
 
@@ -56,7 +58,6 @@ body.shower-rain {
   --theme-bg-color: #5f6f94cc;
 
   background-color: #25316d;
-  background-size: 100px;
   background-image: url('https://openweathermap.org/img/wn/09d@2x.png');
 }
 
@@ -68,7 +69,6 @@ body.rain {
   --theme-bg-color: #38419dcc;
 
   background-color: #200e3a;
-  background-size: 100px;
   background-image: url('https://openweathermap.org/img/wn/10d@2x.png');
 }
 
@@ -79,7 +79,6 @@ body.thunderstorm {
   --theme-bg-color: #975c8dcc;
 
   background-color: #863a6f;
-  background-size: 100px;
   background-image: url('https://openweathermap.org/img/wn/11d@2x.png');
 }
 
@@ -90,7 +89,6 @@ body.snow {
   --theme-bg-color: #5c99c5cc;
 
   background-color: #f0f5f9;
-  background-size: 100px;
   background-image: url('https://openweathermap.org/img/wn/13d@2x.png');
 }
 
@@ -101,7 +99,6 @@ body.mist {
   --theme-bg-color: #748da6cc;
 
   background-color: #f2d7d9;
-  background-size: 100px;
   background-image: url('https://openweathermap.org/img/wn/50d@2x.png');
 }
 
