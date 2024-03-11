@@ -5,7 +5,10 @@ import { Button, Card, ExpandedForecast, ExpandedReport } from 'components';
 const WeatherDetail = () => {
   const { detailedData, setDetailedDataTo } = useWeather();
 
-  if (detailedData === null) return <h1>Error</h1>;
+  if (!detailedData) {
+    console.log('!detailedData');
+    return <h1 className="error">Error !detailedData</h1>;
+  }
 
   const handleClose = () => {
     setDetailedDataTo(null);
