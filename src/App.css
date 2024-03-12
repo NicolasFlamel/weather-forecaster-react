@@ -1,14 +1,10 @@
+html {
+  overflow-y: scroll;
+}
+
 .App {
   margin: 0 auto;
   max-width: 1024px;
-}
-
-.App > .weather-header {
-  background-color: var(--theme-bg-color);
-}
-
-.App > .weather-main {
-  background-color: var(--theme-bg-color);
 }
 
 * {
@@ -25,6 +21,11 @@
 
 *:focus {
   outline: 5px solid var(--theme-text-color);
+}
+
+.error {
+  background-color: black;
+  color: white;
 }
 
 @media (max-width: 1060px) {

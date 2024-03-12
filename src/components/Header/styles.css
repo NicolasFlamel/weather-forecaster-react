@@ -1,6 +1,8 @@
 .weather-header {
   padding: 1rem;
 
+  background-color: var(--theme-bg-color);
+
   border-width: 1px;
   border-style: solid;
   border-top: unset;

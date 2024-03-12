@@ -1,5 +1,6 @@
-import Button from 'components/Button';
 import './styles.css';
+import setTheme from 'Themes';
+import { Button } from 'components';
 import { useUnit, useWeather } from 'context';
 import { getSpeedString, getTempString } from 'helpers/convert';
 
@@ -8,9 +9,11 @@ const WeatherReport = () => {
   const { isMetric } = useUnit();
 
   if (loadingWeather) return <h1>Loading Weather</h1>;
-  if (!weatherData) {
+  else if (!weatherData) {
     console.error('!weatherData');
-    return <h1>Error !weatherData</h1>;
+    return <h1 className="error">Error !weatherData</h1>;
+  } else {
+    setTheme(weatherData.weather[0]);
   }
 
   const handleClick = () => {

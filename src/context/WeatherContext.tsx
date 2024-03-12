@@ -1,5 +1,4 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import setTheme from 'Themes';
 import {
   WeatherDataType,
   ForecastDataType,
@@ -20,8 +19,8 @@ interface WeatherContextInterface {
   setLocation: React.Dispatch<LocationType>;
   weatherData: WeatherDataType | undefined;
   forecastData: ForecastDataType | undefined;
-  detailedData: WeatherDataType | ForecastDataListType[] | null;
-  setDetailedDataTo: (day: ForecastDayRange | null) => void;
+  detailedData: WeatherDataType | ForecastDataListType[] | undefined;
+  setDetailedDataTo: (day: ForecastDayRange) => void;
   loadingWeather: boolean;
 }
 
@@ -46,8 +45,8 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   const [weatherData, setWeatherData] = useState<WeatherDataType>();
   const [forecastData, setForecastData] = useState<ForecastDataType>();
   const [detailedData, setDetailedData] = useState<
-    WeatherDataType | ForecastDataListType[] | null
-  >(null);
+    WeatherDataType | ForecastDataListType[]
+  >();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -58,16 +57,6 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     return () => controller.abort();
     // eslint-disable-next-line
   }, [location]);
-
-  useEffect(() => {
-    if (detailedData === null && weatherData) {
-      setTheme(weatherData?.weather[0]);
-    } else if (Array.isArray(detailedData)) {
-      setTheme(detailedData[4].weather[0]);
-    } else if (detailedData) {
-      setTheme(detailedData.weather[0]);
-    } else setTheme();
-  }, [weatherData, detailedData]);
 
   const getWeather = async (signal: AbortSignal) => {
     console.log('fetching data');
@@ -104,9 +93,8 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
     }
   };
 
-  const setDetailedDataTo = (day: ForecastDayRange | null) => {
-    if (day === null) setDetailedData(null);
-    else if (day === 0 && weatherData) setDetailedData(weatherData);
+  const setDetailedDataTo = (day: ForecastDayRange) => {
+    if (day === 0 && weatherData) setDetailedData(weatherData);
     else if (forecastData) {
       const section = day - 1;
       // data is split in intervals of 3 hours from 00:00 to 24:00
