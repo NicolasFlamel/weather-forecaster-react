@@ -5,6 +5,16 @@
 }
 
 .report-details img {
+  grid-row: 1;
+}
+
+.report-details .current-weather {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-content: center;
+
+  margin: 1rem;
+  text-transform: capitalize;
   grid-row: 2;
 }
 

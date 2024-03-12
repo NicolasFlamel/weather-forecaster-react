@@ -23,10 +23,13 @@ const ExpandedReport = ({ data }: ReportDetailsProps) => {
   return (
     <section className="report-details">
       <h2>Current Report</h2>
-      <img
-        alt={currentWeather.description}
-        src={`https://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`}
-      />
+      <section className="current-weather">
+        <img
+          alt={currentWeather.description}
+          src={`https://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`}
+        />
+        <p>{currentWeather.description}</p>
+      </section>
       <Card>
         <h3>Wind</h3>
         <p>
