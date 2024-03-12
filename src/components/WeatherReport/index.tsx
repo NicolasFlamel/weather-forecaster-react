@@ -1,10 +1,15 @@
 import './styles.css';
+import { Dispatch, SetStateAction } from 'react';
 import setTheme from 'Themes';
 import { Button } from 'components';
 import { useUnit, useWeather } from 'context';
 import { getSpeedString, getTempString } from 'helpers/convert';
 
-const WeatherReport = () => {
+interface WeatherReportProps {
+  setView: Dispatch<SetStateAction<boolean>>;
+}
+
+const WeatherReport = ({ setView }: WeatherReportProps) => {
   const { weatherData, setDetailedDataTo, loadingWeather } = useWeather();
   const { isMetric } = useUnit();
 
@@ -18,6 +23,7 @@ const WeatherReport = () => {
 
   const handleClick = () => {
     setDetailedDataTo(0);
+    setView((prev) => !prev);
   };
 
   return (

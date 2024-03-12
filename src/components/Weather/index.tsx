@@ -44,7 +44,7 @@ const Weather = () => {
               ref={summaryRef}
             >
               <Card>
-                <WeatherReport />
+                <WeatherReport setView={setSummaryView} />
               </Card>
               <Card>
                 <WeatherForecast setView={setSummaryView} />
