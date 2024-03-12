@@ -1,4 +1,4 @@
-.weather-details .custom-card {
+.weather-details > .custom-card {
   position: relative;
 }
 

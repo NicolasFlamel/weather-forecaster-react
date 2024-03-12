@@ -1,0 +1,66 @@
+.report-details {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  column-gap: 1rem;
+}
+
+.report-details img {
+  grid-row: 1;
+}
+
+.report-details .current-weather {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-content: center;
+
+  margin: 1rem;
+  text-transform: capitalize;
+  grid-row: 2;
+}
+
+.report-details p {
+  font:
+    1.2rem 'Fira Sans',
+    sans-serif;
+  text-align: center;
+}
+
+.report-details > .custom-card {
+  grid-row: 3;
+  display: grid;
+  grid-template-rows: min-content auto;
+  align-items: center;
+}
+
+.arrow-icon {
+  display: inline;
+  vertical-align: middle;
+}
+
+.temp {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.min-max {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+}
+
+.temp-max,
+.temp-min {
+  grid-row: 2;
+}
+
+.temp-min {
+  color: blue;
+  text-shadow: 0.5px 0.5px 0 black;
+}
+
+.temp-max {
+  color: red;
+  text-shadow: 0.5px 0.5px 0 black;
+  /* text-shadow: 1px 1px red; */
+}
