@@ -22,7 +22,7 @@ body.clear-sky {
 }
 
 body.few-clouds {
-  --theme-text-color: #176b87cc;
+  --theme-text-color: #176b87;
   --theme-border-color: #176b87cc;
   --theme-card-color: #86b6f6;
   --theme-bg-color: #176b87cc;
@@ -32,7 +32,7 @@ body.few-clouds {
 }
 
 body.scattered-clouds {
-  --theme-text-color: #59c1bdcc;
+  --theme-text-color: #59c1bd;
   --theme-border-color: #59c1bdcc;
   --theme-card-color: #0d4c92;
   --theme-bg-color: #59c1bdcc;
@@ -42,7 +42,7 @@ body.scattered-clouds {
 }
 
 body.broken-clouds {
-  --theme-text-color: #ffffffcc;
+  --theme-text-color: #ffffff;
   --theme-border-color: #ffffffcc;
   --theme-card-color: #333333;
   --theme-bg-color: #ffffffcc;
@@ -52,7 +52,7 @@ body.broken-clouds {
 }
 
 body.shower-rain {
-  --theme-text-color: #5f6f94cc;
+  --theme-text-color: #5f6f94;
   --theme-border-color: #5f6f94cc;
   --theme-card-color: #97d2ec;
   --theme-bg-color: #5f6f94cc;
@@ -62,7 +62,7 @@ body.shower-rain {
 }
 
 body.rain {
-  --theme-text-color: #38419dcc;
+  --theme-text-color: #38419d;
   --theme-border-color: #38419dcc;
   --theme-card-color: #22afb4;
 
@@ -73,7 +73,7 @@ body.rain {
 }
 
 body.thunderstorm {
-  --theme-text-color: #975c8dcc;
+  --theme-text-color: #975c8d;
   --theme-border-color: #975c8dcc;
   --theme-card-color: #ffadbc;
   --theme-bg-color: #975c8dcc;
@@ -83,7 +83,7 @@ body.thunderstorm {
 }
 
 body.snow {
-  --theme-text-color: #5c99c5cc;
+  --theme-text-color: #5c99c5;
   --theme-border-color: #5c99c5cc;
   --theme-card-color: #f0f5f9;
   --theme-bg-color: #5c99c5cc;
@@ -93,7 +93,7 @@ body.snow {
 }
 
 body.mist {
-  --theme-text-color: #748da6cc;
+  --theme-text-color: #748da6;
   --theme-border-color: #748da6cc;
   --theme-card-color: #f2d7d9;
   --theme-bg-color: #748da6cc;
