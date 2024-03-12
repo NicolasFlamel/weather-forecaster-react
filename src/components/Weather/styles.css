@@ -1,9 +1,11 @@
 .weather-main {
-  padding: 1rem;
   margin: 1rem 0;
+}
 
+.weather-main > * {
+  padding: 1rem;
+  background-color: var(--theme-bg-color);
   border-width: 1px;
-  border-style: solid;
 }
 
 .weather-name {

@@ -20,11 +20,13 @@ const Weather = () => {
 
   return (
     <main className="weather-main">
-      <Card className="weather-name">
-        <h1>
-          {weatherData?.name} - {weatherData?.sys.country}
-        </h1>
-      </Card>
+      <section className="weather-name">
+        <Card>
+          <h1>
+            {weatherData?.name} - {weatherData?.sys.country}
+          </h1>
+        </Card>
+      </section>
       <SwitchTransition>
         <CSSTransition
           key={summaryView ? 'summary' : 'details'}
