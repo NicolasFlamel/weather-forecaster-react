@@ -16,3 +16,22 @@
 .weather-summary > * {
   margin: 0.5rem 0;
 }
+
+/*  Transitions */
+
+.weather-display.balloon-enter {
+  opacity: 0;
+}
+.weather-display.balloon-exit {
+  opacity: 1;
+}
+.weather-display.balloon-enter-active {
+  opacity: 1;
+}
+.weather-display.balloon-exit-active {
+  opacity: 0;
+}
+.weather-display.balloon-enter-active,
+.weather-display.balloon-exit-active {
+  transition: opacity 500ms;
+}
