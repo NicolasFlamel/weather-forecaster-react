@@ -1,7 +1,7 @@
 import './styles.css';
 import { Dispatch, SetStateAction } from 'react';
 import setTheme from 'Themes';
-import { Button } from 'components';
+import { Card } from 'components';
 import { useUnit, useWeather } from 'context';
 import { getSpeedString, getTempString } from 'helpers/convert';
 
@@ -29,25 +29,24 @@ const WeatherReport = ({ setView }: WeatherReportProps) => {
   return (
     <section className="weather-report">
       <h2>Current Weather</h2>
-      <section>
-        <img
-          className="weather-img weather-icon"
-          title={weatherData.weather[0].description}
-          alt={weatherData.weather[0].description}
-          src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
-        />
-      </section>
-
-      <section>
-        <p>Temperature: {getTempString(weatherData.main.temp, isMetric)}</p>
-        <p>
-          Feels like: {getTempString(weatherData.main.feels_like, isMetric)}
-        </p>
-        <p>Wind Speed: {getSpeedString(weatherData.wind.speed, isMetric)}</p>
-        <p>Humidity: {weatherData.main.humidity + '%'}</p>
-      </section>
-
-      <Button onClick={handleClick}>Show More</Button>
+      <Card onClick={handleClick}>
+        <section>
+          <img
+            className="weather-img weather-icon"
+            title={weatherData.weather[0].description}
+            alt={weatherData.weather[0].description}
+            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+          />
+        </section>
+        <section>
+          <p>Temperature: {getTempString(weatherData.main.temp, isMetric)}</p>
+          <p>
+            Feels like: {getTempString(weatherData.main.feels_like, isMetric)}
+          </p>
+          <p>Wind Speed: {getSpeedString(weatherData.wind.speed, isMetric)}</p>
+          <p>Humidity: {weatherData.main.humidity + '%'}</p>
+        </section>
+      </Card>
     </section>
   );
 };
