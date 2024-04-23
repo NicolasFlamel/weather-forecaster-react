@@ -8,14 +8,13 @@
   grid-row: 1;
 }
 
-.report-details .current-weather {
+.report-details .current-detailed-weather {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
 
   margin: 1rem;
   text-transform: capitalize;
-  grid-row: 2;
 }
 
 .report-details p {
@@ -25,8 +24,13 @@
   text-align: center;
 }
 
-.report-details > .custom-card {
-  grid-row: 3;
+.details-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.report-details .custom-card {
   display: grid;
   grid-template-rows: min-content auto;
   align-items: center;
