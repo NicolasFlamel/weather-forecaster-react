@@ -26,14 +26,16 @@
 
 .details-data {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  justify-content: center;
   gap: 1rem;
 }
 
-.report-details .custom-card {
+.details-data .custom-card {
   display: grid;
   grid-template-rows: min-content auto;
   align-items: center;
+  min-height: 110px;
 }
 
 .arrow-icon {

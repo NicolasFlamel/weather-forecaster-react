@@ -37,8 +37,12 @@ const ExpandedReport = ({ data }: ReportDetailsProps) => {
         <Card>
           <h3>Wind</h3>
           <p>
-            <ArrowIcon style={imgStyles} className="arrow-icon" />{' '}
-            {getSpeedString(wind.speed, isMetric)}
+            <ArrowIcon
+              title={wind.deg + 'º'}
+              style={imgStyles}
+              className="arrow-icon"
+            />
+            {' ' + getSpeedString(wind.speed, isMetric)}
           </p>
         </Card>
         <Card>
