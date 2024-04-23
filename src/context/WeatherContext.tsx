@@ -88,8 +88,8 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
       setForecastData(forecastJSON);
       setLoadingWeather(false);
     } catch (err) {
-      // if (err instanceof DOMException && err.name === 'AbortError') return;
-      // else console.error(err);
+      if (err instanceof DOMException && err.name === 'AbortError') return;
+      else console.error(err);
     }
   };
 
