@@ -77,8 +77,8 @@ export const WeatherProvider = ({ children }: WeatherProviderProps) => {
       if (!weatherResponse.ok && !forecastResponse.ok) return;
 
       const [weatherJSON, forecastJSON] = await Promise.all([
-        weatherResponse.json(),
-        forecastResponse.json(),
+        weatherResponse.json() as Promise<WeatherDataType>,
+        forecastResponse.json() as Promise<ForecastDataType>,
       ]);
 
       localStorage.setItem('weatherJSON', JSON.stringify(weatherJSON));
