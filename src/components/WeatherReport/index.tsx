@@ -29,7 +29,7 @@ const WeatherReport = ({ setView }: WeatherReportProps) => {
   return (
     <section className="weather-report">
       <h2>Current Weather</h2>
-      <Card onClick={handleClick}>
+      <Card onClick={handleClick} className="current-weather">
         <section>
           <img
             className="weather-img weather-icon"
@@ -39,12 +39,18 @@ const WeatherReport = ({ setView }: WeatherReportProps) => {
           />
         </section>
         <section>
-          <p>Temperature: {getTempString(weatherData.main.temp, isMetric)}</p>
-          <p>
-            Feels like: {getTempString(weatherData.main.feels_like, isMetric)}
-          </p>
-          <p>Wind Speed: {getSpeedString(weatherData.wind.speed, isMetric)}</p>
-          <p>Humidity: {weatherData.main.humidity + '%'}</p>
+          <section className="current-data">
+            <p>Temperature: {getTempString(weatherData.main.temp, isMetric)}</p>
+            <p>
+              Feels like: {getTempString(weatherData.main.feels_like, isMetric)}
+            </p>
+          </section>
+          <section className="current-data">
+            <p>
+              Wind Speed: {getSpeedString(weatherData.wind.speed, isMetric)}
+            </p>
+            <p>Humidity: {weatherData.main.humidity + '%'}</p>
+          </section>
         </section>
       </Card>
     </section>

@@ -1,10 +1,6 @@
 import './styles.css';
-import { ReactNode } from 'react';
 
-interface CardProps extends React.DOMAttributes<HTMLElement> {
-  children: ReactNode;
-  className?: string;
-}
+interface CardProps extends React.HTMLAttributes<HTMLElement> {}
 
 const Card = ({ children, className, onClick }: CardProps) => {
   const customClass = className ? [className, 'custom-card'] : ['custom-card'];

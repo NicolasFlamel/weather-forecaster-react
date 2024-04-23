@@ -32,7 +32,6 @@ const WeatherDetail = ({ setView }: WeatherDetailProps) => {
 
   return (
     <Card>
-      <h2>Detailed Weather</h2>
       <Button className="close-details close-btn" onClick={handleClose}>
         X
       </Button>
