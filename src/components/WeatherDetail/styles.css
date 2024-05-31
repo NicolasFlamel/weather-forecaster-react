@@ -4,7 +4,6 @@
 
 .close-details {
   position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
+  top: 1rem;
+  right: 1rem;
 }
