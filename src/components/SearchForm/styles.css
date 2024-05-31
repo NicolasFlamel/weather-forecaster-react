@@ -29,6 +29,6 @@
 
 .search-input > input {
   background: none;
-  padding: 0 1rem;
+  padding: 10px;
   border-radius: 5px;
 }

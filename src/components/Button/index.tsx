@@ -3,19 +3,11 @@ import { ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button = ({
-  children,
-  type,
-  onClick,
-  disabled,
-  className,
-}: ButtonProps) => {
+const Button = ({ children, className, ...buttonProps }: ButtonProps) => {
   return (
     <button
       className={className ? className + ' custom-btn' : 'custom-btn'}
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
+      {...buttonProps}
     >
       {children}
     </button>

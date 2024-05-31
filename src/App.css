@@ -14,13 +14,12 @@ html {
 }
 
 *::placeholder {
-  padding-left: 1rem;
   color: var(--theme-text-color);
   font-style: italic;
 }
 
 *:focus {
-  outline: 5px solid var(--theme-text-color);
+  outline: 1px solid var(--theme-text-color);
 }
 
 .error {

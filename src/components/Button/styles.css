@@ -16,22 +16,11 @@
   border: 2px solid var(--theme-text-color);
 }
 
-.close-btn {
-  min-width: 30px;
-  min-height: 30px;
-  width: 2rem;
-  height: 2rem;
-  border: none;
-  color: white;
-  background-color: rgb(247, 78, 78);
+.custom-btn > svg {
+  fill: var(--theme-text-color);
 }
 
-.close-btn:hover {
-  border: none;
-  color: white;
-  background-color: red;
-}
-
-.close-btn:focus {
-  outline: 5px solid rgb(247, 78, 78);
+.custom-btn:hover > svg {
+  fill: var(--theme-card-color);
+  background-color: var(--theme-text-color);
 }

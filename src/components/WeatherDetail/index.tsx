@@ -3,10 +3,13 @@ import { useWeather } from 'context/WeatherContext';
 import { Button, Card, ExpandedForecast, ExpandedReport } from 'components';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import setTheme from 'Themes';
+import { ReactComponent as ReturnSvg } from 'assets/images/return-arrow.svg';
 
 interface WeatherDetailProps {
   setView: Dispatch<SetStateAction<boolean>>;
 }
+
+const size = '30px';
 
 const WeatherDetail = ({ setView }: WeatherDetailProps) => {
   const { detailedData } = useWeather();
@@ -32,8 +35,8 @@ const WeatherDetail = ({ setView }: WeatherDetailProps) => {
 
   return (
     <Card>
-      <Button className="close-details close-btn" onClick={handleClose}>
-        X
+      <Button className="close-details" onClick={handleClose}>
+        <ReturnSvg height={size} width={size} />
       </Button>
       {Array.isArray(detailedData) ? (
         <ExpandedForecast data={detailedData} />
